@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.HouseDealMapper">
+
+	
+	<select id="searchAll"  resultType="HouseDealDto">
+		select * from housedeal order by no
+	</select>
+	
+	<select id="searchByDong" parameterType="String" resultType="HouseDealDto">
+		select * from housedeal where dong like #{dong}
+	</select>
+	
+	<select id="searchByAptName" parameterType="String" resultType="HouseDealDto">
+		select * from HouseDeal where AptName like CONCAT('%', #{aptname}, '%')
+	</select>
+	
+</mapper>
