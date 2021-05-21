@@ -4,7 +4,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 
 <!-- Navigation -->
-<nav class="navbar navbar-light bg-light static-top ">
+<nav class="navbar fixed-top navbar-light bg-light">
 	<div class="container">
 		<a class="navbar-brand" href="${root}">Happy House</a>
 		<div class="text-right">

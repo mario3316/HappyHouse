@@ -210,7 +210,7 @@
 <body>
 <div class="container" align="center">
 	<%@ include file="/WEB-INF/views/user/header.jsp" %>
-	<br><br>
+	<br><br><br><br>
 	<h2>회원 목록</h2>
 	<!-- 검색 -->
 	<form id="searchform" method="get" class="form-inline" action="">

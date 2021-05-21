@@ -58,7 +58,7 @@
 	<div class="container" align="center">
 	<%@ include file="/WEB-INF/views/user/header.jsp" %>
 	  <div class="col-lg-8" align="center">
-	  <br>
+	  <br><br><br><br>
 	  <h2>공지목록</h2>
 	  <p>공지사항 필독</p>  
 	  <table class="table table-borderless">
