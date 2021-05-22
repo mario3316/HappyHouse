@@ -6,19 +6,19 @@
 
 	<select id="login" parameterType="map" resultType="memberDto">
 		select username, userid, email, role
-		from ssafy_member
+		from member
 		where userid = #{userid} and userpwd = #{userpwd}
 	</select>
 	
 	<select id="userList" resultType="memberDto">
 		select userid, userpwd, username, email, address, date_format(joindate, '%y.%m.%d') joindate
-		from ssafy_member
+		from member
 		order by joindate desc
 	</select>
 	
 	<select id="searchList" parameterType="map" resultType="memberDto">
 		select userid, userpwd, username, email, address, date_format(joindate, '%y.%m.%d') joindate
-		from ssafy_member
+		from member
 		<if test="word != null and word != ''">
 			where ${key} like concat('%', #{word}, '%')
 		</if>
@@ -26,23 +26,23 @@
 	
 	<select id="userInfo" parameterType="String" resultType="memberdto">
 		select userid, userpwd, username, email, address, date_format(joindate, '%y.%m.%d') joindate
-		from ssafy_member
+		from member
 		where userid = #{userid}
 	</select>
 	
 	<insert id="userRegister" parameterType="MemberDto">
-		insert into ssafy_member (userid, userpwd, username, email, address, joindate)
+		insert into member (userid, userpwd, username, email, address, joindate)
 		values (#{userid}, #{userpwd}, #{username}, #{email}, #{address}, now())
 	</insert>
 	
 	<update id="userModify" parameterType="MemberDto">
-		update ssafy_member
+		update member
 		set userpwd = #{userpwd}, email = #{email}, address = #{address}
 		where userid = #{userid}
 	</update>
 	
 	<delete id="userDelete" parameterType="String">
-		delete from ssafy_member
+		delete from member
 		where userid = #{userid}
 	</delete>
 	
