@@ -6,5 +6,6 @@ import com.ssafy.happyhouse.model.CommercialDto;
 
 public interface CommercialMapper {
 
-	public List<CommercialDto> searchByDong(String dong);
+	public List<CommercialDto> searchCafeByDong(String dong);
+	public List<CommercialDto> searchConvenienceByDong(String dong);
 }

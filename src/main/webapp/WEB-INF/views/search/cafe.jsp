@@ -28,8 +28,10 @@
 <script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXzV7MuAZWjlfWlJUf8v6NkQk0pbUi4o&callback=initMap" async defer></script>
 
 <script type="text/javascript">
-
+	
 	let map;
+	let cafemarkers = [];
+	let convmarkers = [];
 	let markers = [];
 	var lat = 37.606991;
 	var lng = 127.0232185;
@@ -43,35 +45,66 @@
 			},
 			zoom : zoom,
 		});
-		
-		// click listener
-		//map.addListener("click", (event) => {
-			// 클릭 이벤트 처리
-		//});
 	}
 	
 	$(document).ready(function() {
-		// 카페 검색
+		let searchinfo;
+		
+		// 체크 버튼 클릭 시(카페)
+		$("#chkcafe").change(function() {
+			if ($("#chkcafe").is(":checked")) {
+				searchinfo = JSON.stringify({
+					"key" : $("#key").val(), 
+					"word" : $("#word").val(),
+				});
+				
+				if (cafemarkers.length == 0) getCafes(searchinfo);
+				markers.push(...cafemarkers);
+				$(cafecount).css("display", "");
+			} else {
+				deleteMarker();
+				if ($("#chkconv").is(":checked")) markers.push(...convmarkers);
+				$(cafecount).css("display", "none");
+			}
+			setMapOnAll(map);
+		});
+		
+		// 체크 버튼 클릭 시(편의점)
+		$("#chkconv").change(function() {
+			if ($("#chkconv").is(":checked")) {
+				searchinfo = JSON.stringify({
+					"key" : $("#key").val(), 
+					"word" : $("#word").val(),
+				});
+				
+				if (cafemarkers.length == 0) getConvs(searchinfo);
+				markers.push(...convmarkers);
+				$(convcount).css("display", "");	
+			} else {
+				deleteMarker();
+				if ($("#chkcafe").is(":checked")) markers.push(...cafemarkers);
+				$(convcount).css("display", "none");
+			}
+			setMapOnAll(map);
+		});
+		
+		// 검색 버튼 클릭 시
 		$("#searchBtn").click(function() {
-			let searchinfo = JSON.stringify({
+			if ($("#word").val() == "") {
+				alert("검색할 동을 입력해주세요!");
+				return;
+			}
+			
+			searchinfo = JSON.stringify({
 				"key" : $("#key").val(), 
 				"word" : $("#word").val(),
 			});
-			$.ajax({
-				url: '${root}/search/cafe',  
-				type: 'POST',
-				contentType: 'application/json;charset=utf-8',
-				dataType: 'json',
-				data: searchinfo,
-				success: function(cafes) {
-					addMarker(cafes);
-					addCafeList(cafes);
-				},
-				error:function(xhr,status,msg){
-					console.log("상태값 : " + status + " Http에러메시지 : "+msg);
-				}
-				
-			});
+			
+			if ($(chkcafe).is(":checked")) getCafes(searchinfo);
+			if ($(chkconv).is(":checked")) getConvs(searchinfo);
+			
+			deleteMarker();
+			setMapOnAll(map);
 		});
 		
 		// 검색하기 전
@@ -79,29 +112,97 @@
 	});
 	
 	// 카페 정보 출력
-	function addCafeList(cafes) {
-		$(cafecount).text($("#word").val() + '의 카페 수: ' + cafes.length);
-		$(count).css("display", "");
-		
+	function addDataList(datas, where) {
+		if (where == 'cafe') {
+			$(cafecount).text($("#word").val() + '의 카페 수: ' + datas.length);
+		} else if (where == 'conv') {
+			$(convcount).text($("#word").val() + '의 편의점 수: ' + datas.length);
+		}
+		$(count).css("display", "");			
 	}
 	
-	// markers에 카페 추가
-	function addMarker(cafes) {
-		deleteMarker();
-		
-		$(cafes).each(function(i, cafe) {
-			const marker = new google.maps.Marker({
-				id: i,
-				title: cafe.tradeName,
-				label: cafe.tradeName,
-				position: new google.maps.LatLng(cafe.lat, cafe.lng),
-				map: map
-			});
-				
-			markers.push(marker);
+	// data 호출
+	function getCafes(searchinfo) {
+		$.ajax({
+			url: '${root}/search/cafe',  
+			type: 'POST',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			data: searchinfo,
+			success: function(datas) {
+				addMarker(datas, 'cafe');
+				addDataList(datas, 'cafe');
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
+		});		
+	}
+	
+	function getConvs(searchinfo) {
+		$.ajax({
+			url: '${root}/search/convenience',  
+			type: 'POST',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			data: searchinfo,
+			success: function(datas) {
+				addMarker(datas, 'conv');
+				addDataList(datas, 'conv');
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
 		});
+	}
+	
+	// marker에 정보 추가
+	function addMarker(datas, where) {
+		var infowindow = new google.maps.InfoWindow();
 		
-		setMapOnAll(map);
+		if (where == 'cafe') {
+			$(datas).each(function(i, data) {
+				const marker = new google.maps.Marker({
+					id: i,
+					title: data.tradeName,
+					label: data.tradeName,
+					position: new google.maps.LatLng(data.lat, data.lng),
+					map: map
+				});
+
+				// click listener
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent("[" + marker.title + "] " + data.city + " " + data.dong);
+					infowindow.open(map, marker);
+					map.setZoom(15);
+					map.setCenter(marker.getPosition());
+				});
+				
+				cafemarkers.push(marker);
+			});
+			markers.push(...cafemarkers);
+		} else if (where == 'conv') {
+			$(datas).each(function(i, data) {
+				const marker = new google.maps.Marker({
+					id: i,
+					title: data.tradeName,
+					label: data.tradeName,
+					position: new google.maps.LatLng(data.lat, data.lng),
+					map: map
+				});
+
+				// click listener
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent("[" + marker.title + "] " + data.city + " " + data.dong);
+					infowindow.open(map, marker);
+					map.setZoom(15);
+					map.setCenter(marker.getPosition());
+				});
+				
+				convmarkers.push(marker);
+			});
+			markers.push(...convmarkers);
+		}
 	}
 	
 	// 지도에 markers 표시
@@ -111,7 +212,7 @@
 		}	
 	}
 	
-	// 지도에서markers 삭제
+	// 지도에서 markers 삭제
 	function deleteMarker() {
 		setMapOnAll(null);
 		markers = [];
@@ -177,12 +278,12 @@
 			                    <div class="media-body">
 								<div class="form-group form-check">
 								    <label class="form-check-label">
-								      <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok"${cafechk}>카페 
+								      <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok" checked>카페 
 								    </label>
 								</div>
 								<div class="form-group form-check">
 								    <label class="form-check-label">
-								      <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok"${convchk}>편의점 
+								      <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok" checked>편의점 
 								    </label>
 								</div>
 		                    	</div>

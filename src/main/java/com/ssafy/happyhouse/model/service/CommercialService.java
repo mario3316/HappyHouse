@@ -7,5 +7,6 @@ import com.ssafy.happyhouse.model.CommercialDto;
 
 public interface CommercialService {
 
-	public List<CommercialDto> search(Map<String, String> map) throws Exception;
+	public List<CommercialDto> searchCafe(Map<String, String> map) throws Exception;
+	public List<CommercialDto> searchConvenience(Map<String, String> map) throws Exception;
 }

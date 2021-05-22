@@ -4,7 +4,11 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.mapper.CommercialMapper">
 	
-	<select id="searchByDong" parameterType="String" resultType="CommercialDto">
+	<select id="searchCafeByDong" parameterType="String" resultType="CommercialDto">
 		select * from commercial where dong like #{dong} and smallcategory like concat('%', '카페', '%')
+	</select>
+	
+	<select id="searchConvenienceByDong" parameterType="String" resultType="CommercialDto">
+		select * from commercial where dong like #{dong} and smallcategory like concat('%', '편의점', '%')
 	</select>
 </mapper>

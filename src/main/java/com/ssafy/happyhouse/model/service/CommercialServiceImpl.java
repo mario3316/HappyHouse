@@ -17,11 +17,18 @@ public class CommercialServiceImpl implements CommercialService {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<CommercialDto> search(Map<String, String> map) throws Exception {
+	public List<CommercialDto> searchCafe(Map<String, String> map) throws Exception {
 		if (map.get("key").equals("dong")) {
-			return sqlSession.getMapper(CommercialMapper.class).searchByDong(map.get("word"));
+			return sqlSession.getMapper(CommercialMapper.class).searchCafeByDong(map.get("word"));
 		}
 		return null;
 	}
 
+	@Override
+	public List<CommercialDto> searchConvenience(Map<String, String> map) throws Exception {
+		if (map.get("key").equals("dong")) {
+			return sqlSession.getMapper(CommercialMapper.class).searchConvenienceByDong(map.get("word"));
+		}
+		return null;
+	}
 }

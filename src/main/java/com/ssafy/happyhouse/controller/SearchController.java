@@ -54,12 +54,23 @@ public class SearchController {
 	@ResponseBody
 	@RequestMapping(value = "/cafe", method = RequestMethod.POST)
 	public ResponseEntity<List<CommercialDto>> searchCafe(@RequestBody Map<String, String> map) throws Exception {
-			List<CommercialDto> list = commercialService.search(map);
-			if (list != null && !list.isEmpty()) {
-				return new ResponseEntity<List<CommercialDto>>(list, HttpStatus.OK);
+			List<CommercialDto> cafelist = commercialService.searchCafe(map);
+			if (cafelist != null && !cafelist.isEmpty()) {
+				return new ResponseEntity<List<CommercialDto>>(cafelist, HttpStatus.OK);
 			} else
 				return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/convenience", method = RequestMethod.POST)
+	public ResponseEntity<List<CommercialDto>> searchConvenience(@RequestBody Map<String, String> map) throws Exception {
+		List<CommercialDto> convlist = commercialService.searchConvenience(map);
+		if (convlist != null && !convlist.isEmpty()) {
+			return new ResponseEntity<List<CommercialDto>>(convlist, HttpStatus.OK);
+		} else
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+	}
+	
 //	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 //	public String modify(@RequestParam("noticeno") int noticeno, Model model) {
 //		try {
