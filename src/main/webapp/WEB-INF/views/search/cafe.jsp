@@ -5,8 +5,8 @@
 	<c:redirect url="/" />
 </c:if>
 <c:if test="${userinfo != null}">
-	<!DOCTYPE html>
-	<html>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,27 +89,36 @@
 		});
 		
 		// 검색 버튼 클릭 시
-		$("#searchBtn").click(function() {
-			if ($("#word").val() == "") {
-				alert("검색할 동을 입력해주세요!");
-				return;
-			}
-			
-			searchinfo = JSON.stringify({
-				"key" : $("#key").val(), 
-				"word" : $("#word").val(),
-			});
-			
-			if ($(chkcafe).is(":checked")) getCafes(searchinfo);
-			if ($(chkconv).is(":checked")) getConvs(searchinfo);
-			
-			deleteMarker();
-			setMapOnAll(map);
+		$("#searchBtn").click(search);
+		// 키보드 엔터를 눌렀을 경우
+		$("#word").keydown(function(key) {
+			if (key.keyCode == 13) 
+				search();
 		});
 		
 		// 검색하기 전
 		$(count).css("display", "none");
 	});
+	
+	// 상권 정보 검색(엔터/버튼)
+	function search() {
+		if ($("#word").val() == "") {
+			alert("검색할 동을 입력해주세요!");
+			return;
+		}
+		
+		searchinfo = JSON.stringify({
+			"key" : $("#key").val(), 
+			"word" : $("#word").val(),
+		});
+		
+		if ($(chkcafe).is(":checked")) getCafes(searchinfo);
+		if ($(chkconv).is(":checked")) getConvs(searchinfo);
+		
+		deleteMarker();
+		getLatLng();
+		setMapOnAll(map);
+	}
 	
 	// 카페 정보 출력
 	function addDataList(datas, where) {
@@ -121,7 +130,27 @@
 		$(count).css("display", "");			
 	}
 	
-	// data 호출
+	// 행정동 위도/경도 받아오기
+	function getLatLng() {
+		$.ajax({
+			url: '${root}/search/' + $("#word").val(),  
+			type: 'GET',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			success: function(latlng) {
+				map.setCenter({
+					lat: parseFloat(latlng.lat),
+					lng: parseFloat(latlng.lng),
+				});
+				map.setZoom(14);
+			},
+			error: function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
+		});			
+	}
+	
+	// data 받아오기
 	function getCafes(searchinfo) {
 		$.ajax({
 			url: '${root}/search/cafe',  
@@ -188,6 +217,7 @@
 					title: data.tradeName,
 					label: data.tradeName,
 					position: new google.maps.LatLng(data.lat, data.lng),
+					icon: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
 					map: map
 				});
 
