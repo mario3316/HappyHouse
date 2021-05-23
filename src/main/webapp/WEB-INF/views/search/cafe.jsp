@@ -77,7 +77,7 @@
 					"word" : $("#word").val(),
 				});
 				
-				if (cafemarkers.length == 0) getConvs(searchinfo);
+				if (convmarkers.length == 0) getConvs(searchinfo);
 				markers.push(...convmarkers);
 				$(convcount).css("display", "");	
 			} else {
@@ -112,12 +112,20 @@
 			"word" : $("#word").val(),
 		});
 		
+		beforeDelete();
+		
 		if ($(chkcafe).is(":checked")) getCafes(searchinfo);
 		if ($(chkconv).is(":checked")) getConvs(searchinfo);
 		
 		deleteMarker();
 		getLatLng();
 		setMapOnAll(map);
+	}
+	
+	// 검색 전 이전 데이터 지우기
+	function beforeDelete() {
+		cafemarkers = [];	
+		convmarkers = [];	
 	}
 	
 	// 카페 정보 출력
@@ -308,12 +316,12 @@
 			                    <div class="media-body">
 								<div class="form-group form-check">
 								    <label class="form-check-label">
-								      <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok" checked>카페 
+									    <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok" checked>카페
 								    </label>
 								</div>
 								<div class="form-group form-check">
 								    <label class="form-check-label">
-								      <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok" checked>편의점 
+									    <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok" checked>편의점 
 								    </label>
 								</div>
 		                    	</div>
