@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <c:if test="${cookie.ssafy_id.value ne null}">
 	<c:set var="saveid" value="${cookie.ssafy_id.value}"/>
@@ -26,9 +28,7 @@
 <link href="css/landing-page.min.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXzV7MuAZWjlfWlJUf8v6NkQk0pbUi4o&callback=initMap"
-	async defer></script>
+<script	src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap" async defer></script>
 <script src="/js/main.js"></script>
 <script type="text/javascript">
 	function intlogin() {

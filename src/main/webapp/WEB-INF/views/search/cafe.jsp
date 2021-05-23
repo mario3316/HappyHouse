@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:eval expression="@environment.getProperty('google.maps.api.key')" var="googleMapsApiKey" />
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <c:if test="${userinfo == null}">
 	<c:redirect url="/" />
@@ -25,7 +28,7 @@
 <link href="${root}/css/landing-page.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXzV7MuAZWjlfWlJUf8v6NkQk0pbUi4o&callback=initMap" async defer></script>
+<script	src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap" async defer></script>
 
 <script type="text/javascript">
 	
@@ -312,20 +315,14 @@
 							<h3 class="title">상권정보</h3>
 							<hr>
 							
-	                  		<div class="media margin-clear">
-			                    <div class="media-body">
-								<div class="form-group form-check">
-								    <label class="form-check-label">
-									    <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok" checked>카페
-								    </label>
+								<div class="form-check">
+								    <input class="form-check-input" type="checkbox" id="chkcafe" name="chkcafe" value="saveok" checked>
+								    <label class="form-check-label" for="chkcafe">카페</label>
 								</div>
-								<div class="form-group form-check">
-								    <label class="form-check-label">
-									    <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok" checked>편의점 
-								    </label>
+								<div class="form-check">
+								    <input class="form-check-input" type="checkbox" id="chkconv" name="chkconv" value="saveok" checked>
+								    <label class="form-check-label" for="chkconv">편의점</label>
 								</div>
-		                    	</div>
-	                  		</div>
 	                		<hr>
 							
 	                  		<div id="count" class="media margin-clear">
