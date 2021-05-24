@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>SSAFY-회원가입</title>
+<title>HAPPY HOUSE | 회원가입</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -18,7 +18,6 @@ $(document).ready(function() {
 	$("#btn-signup").css("display", "none");
 	
 	$("#registerBtn").click(function() {
-		
 		if($("#username").val() == "") {
 			alert("이름 입력!!!");
 			return;
@@ -31,7 +30,14 @@ $(document).ready(function() {
 		} else if($("#userpwd").val() != $("#pwdcheck").val()) {
 			alert("비밀번호 확인!!!");
 			return;
+		} else if ($("#email").val() == "") {
+			alert("이메일 입력!!!");
+			return;
 		} else {
+			var emailid = $("#email").val();
+			var emaildomain = $("#emaildomain").val();
+			var email = emailid + "@" + emaildomain;
+			$("#email").val(email);
 			$("#memberform").attr("action", "${root}/user/register").submit();
 		}
 	});
@@ -73,6 +79,9 @@ function checkId(msg) {
 
 <div class="container" align="center">
 	<%@ include file="/WEB-INF/views/user/header.jsp" %>
+	
+	<br><br><br><br>
+	<h2>회원 등록</h2>
 	<div class="col-lg-6" align="center">
 		<form id="memberform" method="post" action="">
 		<input type="hidden" name="act" id="act" value="">
@@ -90,13 +99,13 @@ function checkId(msg) {
 				<input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">비밀번호재입력</label>
+				<label for="">비밀번호 재입력</label>
 				<input type="password" class="form-control" id="pwdcheck" name="pwdcheck" placeholder="">
 			</div>
 			<div class="form-group" align="left">
 				<label for="email">이메일</label><br>
-				<div id="email" class="custom-control-inline">
-				<input type="text" class="form-control" id="emailid" name="emailid" placeholder="" size="25"> @
+				<div class="custom-control-inline">
+				<input type="text" class="form-control" id="email" name="email" placeholder="" size="25"> @
 				<select class="form-control" id="emaildomain" name="emaildomain">
 					<option value="naver.com">naver.com</option>
 					<option value="google.com">google.com</option>

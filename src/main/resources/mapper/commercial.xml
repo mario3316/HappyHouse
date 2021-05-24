@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.CommercialMapper">
+	
+	<select id="searchCafeByDong" parameterType="String" resultType="CommercialDto">
+		select * from commercial where dong like #{dong} and smallcategory like concat('%', '카페', '%')
+	</select>
+	
+	<select id="searchConvenienceByDong" parameterType="String" resultType="CommercialDto">
+		select * from commercial where dong like #{dong} and smallcategory like concat('%', '편의점', '%')
+	</select>
+</mapper>

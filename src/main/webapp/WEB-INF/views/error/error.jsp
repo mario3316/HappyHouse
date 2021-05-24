@@ -14,9 +14,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/user/header.jsp" %>
+<br><br><br><br>
 <div class="container">
   <div class="jumbotron">
-  	<%@ include file="/WEB-INF/views/user/header.jsp" %>
     <h1>처리중 에러가 발생했습니다.</h1>      
     <p>${msg}</p>
   </div>  
