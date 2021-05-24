@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public MemberDto login(Map<String, String> map) throws Exception {
-		if(map.get("userid") == null || map.get("userpwd") == null)
+		if(map.get("muserid") == null || map.get("muserpwd") == null)
 			return null;
 		return sqlSession.getMapper(UserMapper.class).login(map);
 	}

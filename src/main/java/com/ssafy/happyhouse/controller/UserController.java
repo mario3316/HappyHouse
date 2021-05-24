@@ -45,7 +45,6 @@ public class UserController {
 					cookie.setMaxAge(0);
 				}
 				response.addCookie(cookie);
-				
 			} else {
 				model.addAttribute("msg", "아이디 또는 비밀번호 확인 후 로그인해 주세요.");
 			}

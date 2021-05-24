@@ -7,7 +7,7 @@
 	<select id="login" parameterType="map" resultType="memberDto">
 		select username, userid, email, role
 		from member
-		where userid = #{userid} and userpwd = #{userpwd}
+		where userid = #{muserid} and userpwd = #{muserpwd}
 	</select>
 	
 	<select id="userList" resultType="memberDto">
