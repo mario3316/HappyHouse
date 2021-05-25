@@ -12,13 +12,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="${root}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom fonts for this template -->
+<link href="${root}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="${root}/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<!-- Custom styles for this template -->
+<link href="${root}/css/landing-page.min.css" rel="stylesheet">
+<!-- 다음 주소검색 API -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#btn-login").css("display", "none");
 	$("#btn-signup").css("display", "none");
 	
 	$("#registerBtn").click(function() {
-		if($("#username").val() == "") {
+		if ($("#username").val() == "") {
 			alert("이름 입력!!!");
 			return;
 		} else if($("#userid").val() == "") {
@@ -27,21 +38,24 @@ $(document).ready(function() {
 		} else if($("#userpwd").val() == "") {
 			alert("비밀번호 입력!!!");
 			return;
-		} else if($("#userpwd").val() != $("#pwdcheck").val()) {
-			alert("비밀번호 확인!!!");
+		} else if ($("#userpwd").val() != $("#pwdcheck").val()) {
+			alert("비밀번호 불일치!!!");
 			return;
-		} else if ($("#email").val() == "") {
+	    } else if ($("#email").val() == "") {
 			alert("이메일 입력!!!");
 			return;
+		} else if ($("#address").val() == "") {
+			alert("주소 입력!!!");
+			return;
 		} else {
-			var emailid = $("#email").val();
-			var emaildomain = $("#emaildomain").val();
-			var email = emailid + "@" + emaildomain;
+			var email = $("#email").val() + "@" + $("#emaildomain").val();
 			$("#email").val(email);
+			var address = $("#postcode").val() + " " + $("#address").val() + $("#detailAddress").val();
+			$("#address").val(address);
 			$("#memberform").attr("action", "${root}/user/register").submit();
 		}
 	});
-
+	
 	$(document).on("blur", "#userid", function() {
 		let userid = $(this).val();
 		$.ajax({
@@ -57,8 +71,13 @@ $(document).ready(function() {
 		});			
 	});
 	
-	$('#zipcode').focusin(function() {
-		$('#zipModal').modal();
+	$(document).on("blur", "#pwdcheck", function() {
+		 if ($("#userpwd").val() != $("#pwdcheck").val()) {
+			$("#pwdcheckmsg").html("비밀번호가 일치하지 않습니다.");
+			$("#pwdcheckmsg").css("color", "#ff0000");
+		 } else {
+			$("#pwdcheckmsg").html("");
+		 }
 	});
 });
 
@@ -73,37 +92,63 @@ function checkId(msg) {
 		$("#check").css("color", "#0000ff");		
 	}
 }
+
+function execDaumPostcode() {
+    daum.postcode.load(function() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+              // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+              $("#postcode").val(data.zonecode);
+              $("#address").val(data.roadAddress);
+              
+              var extraRoadAddr = ''; // 참고 항목 변수
+
+              // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+              // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+              if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                  extraRoadAddr += data.bname;
+              }
+              // 건물명이 있고, 공동주택일 경우 추가한다.
+              if (data.buildingName !== '' && data.apartment === 'Y') {
+                 extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+              }
+              $("#detailAddress").val(extraRoadAddr);
+            }
+        }).open();
+    });
+}
 </script>
 </head>
 <body>
 
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="container" align="center">
-	<%@ include file="/WEB-INF/views/user/header.jsp" %>
-	
 	<br><br><br><br>
 	<h2>회원 등록</h2>
+	
 	<div class="col-lg-6" align="center">
 		<form id="memberform" method="post" action="">
 		<input type="hidden" name="act" id="act" value="">
 			<div class="form-group" align="left">
-				<label for="name">이름</label>
+				<label for="name">이름&nbsp;<span class="text-danger">*</span></label>
 				<input type="text" class="form-control" id="username" name="username" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">아이디</label>
+				<label for="userid">아이디&nbsp;<span class="text-danger">*&nbsp;</span></label>
 				<label id="check"></label>
 				<input type="text" class="form-control" id="userid" name="userid" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">비밀번호</label>
+				<label for="userpwd">비밀번호&nbsp;<span class="text-danger">*</span></label>
 				<input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="">비밀번호 재입력</label>
+				<label for="pwdcheck">비밀번호 재입력&nbsp;<span class="text-danger">*</span></label>
+				<label id="pwdcheckmsg"></label>
 				<input type="password" class="form-control" id="pwdcheck" name="pwdcheck" placeholder="">
 			</div>
 			<div class="form-group" align="left">
-				<label for="email">이메일</label><br>
+				<label for="email">이메일&nbsp;<span class="text-danger">*</span></label><br>
 				<div class="custom-control-inline">
 				<input type="text" class="form-control" id="email" name="email" placeholder="" size="25"> @
 				<select class="form-control" id="emaildomain" name="emaildomain">
@@ -116,13 +161,13 @@ function checkId(msg) {
 				</div>
 			</div>
 			<div class="form-group" align="left">
-				<label for="">주소</label><br>
+				<label for="address">주소&nbsp;<span class="text-danger">*</span></label><br>
 				<div id="addressdiv" class="custom-control-inline">
-					<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" size="7" maxlength="5" readonly="readonly">
-					<!--<button type="button" class="btn btn-primary" onclick="javascript:">우편번호</button>-->
+					<input type="text" class="form-control" id="postcode" name="postcode" placeholder="" size="7" maxlength="5" readonly>
 				</div>
-				<input type="text" class="form-control" id="address" name="address" placeholder="">
-				<input type="text" class="form-control" id="address_detail" name="address_detail" placeholder="">
+				    <button type="button" class="btn btn-outline-info" onclick="execDaumPostcode()">우편번호</button>
+				<input type="text" class="form-control" id="address" name="address" placeholder="도로명주소" readonly>
+				<input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소">
 			</div>
 			<div class="form-group" align="center">
 				<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
@@ -132,42 +177,6 @@ function checkId(msg) {
 	</div>
 </div>
 
-<div id="zipModal" class="modal fade" role="dialog">
-<h5 class="modal-title" id="myModalLabel">우편번호검색</h5>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>    
-            <div class="modal-body text-center">
-            	<form id = "zip_codeForm">
-            		<div align="center">
-            			<label>도로명 주소검색</label>
-            		</div>
-					<div class="input-group" align="left">
-						<input type="text" class="form-control" id="doro" name="doro" placeholder="검색 할 도로명 입력(예: 대왕판교로, 학하서로)">
-						<span class="input-group-btn">
-						<input type="submit" class="btn btn-warning" value="검색" id="searchBtn">
-						</span>
-					</div>
-                </form>
-                <div style="width:100%; height:200px; overflow:auto">
-                	<table class = "table text-center">
-                		<thead>
-                		<tr>
-                			<th style="width:150px;">우편번호</th>
-                			<th style="width:600px;">주소</th>
-                		</tr>
-                		</thead>
-                		<tbody id="zip_codeList"></tbody>
-                	</table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

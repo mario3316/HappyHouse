@@ -263,8 +263,8 @@
 
 </head>
 <body>
-   <!-- Navigation -->
-   <%@ include file="/WEB-INF/views/user/header.jsp"%>
+	<!-- Navigation -->
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
    <!-- Masthead -->
    <header class="masthead text-white text-center">
@@ -353,6 +353,8 @@
 
    <!-- Footer -->
 
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 </body>
 </html>
