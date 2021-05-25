@@ -9,6 +9,7 @@ public class HouseInfoDto {
 	private String jibun;
 	private String lat;
 	private String lng;
+	private String subway;
 
 	private String img;
 
@@ -82,6 +83,21 @@ public class HouseInfoDto {
 
 	public void setLng(String lng) {
 		this.lng = lng;
+	}
+
+	public String getSubway() {
+		return subway;
+	}
+
+	public void setSubway(String subway) {
+		this.subway = subway;
+	}
+
+	@Override
+	public String toString() {
+		return "HouseInfoDto [no=" + no + ", dong=" + dong + ", AptName=" + AptName + ", code=" + code + ", buildYear="
+				+ buildYear + ", jibun=" + jibun + ", lat=" + lat + ", lng=" + lng + ", subway=" + subway + ", img="
+				+ img + "]";
 	}
 
 }

@@ -7,5 +7,9 @@
 	<select id="search" parameterType="int" resultType="HouseInfoDto">
 		select * from houseinfo where no = #{no}
 	</select>
+	
+	<select id="searchByDong" parameterType="String" resultType="HouseInfoDto">
+		select * from houseinfo where dong like CONCAT('%', #{dong}, '%')
+	</select>
 
 </mapper>

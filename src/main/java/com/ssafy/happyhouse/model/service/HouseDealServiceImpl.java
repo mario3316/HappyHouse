@@ -22,6 +22,8 @@ public class HouseDealServiceImpl implements HouseDealService {
 
 	@Override
 	public List<HouseDealDto> search(Map<String, String> map) throws Exception {
+//		System.out.println(map.get("keyword"));
+
 		if (map.get("by").equals("dong")) {
 			return sqlSession.getMapper(HouseDealMapper.class).searchByDong(map.get("keyword"));
 		} else if (map.get("by").equals("aptname")) {
