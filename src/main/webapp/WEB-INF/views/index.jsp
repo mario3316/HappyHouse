@@ -160,6 +160,11 @@
 						style="width: 200px" id="btn-logout"
 						href="${pageContext.request.contextPath}/house/mvsearch">검색</a>
 				</div>
+				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto" align="center">
+					<a class="btn btn-block btn-lg btn-outline-light"
+						style="width: 200px" id="btn-logout"
+						href="${pageContext.request.contextPath}/subway/mvsearch">역세권 정보</a>
+				</div>
 			</div>
 		</div>
 	</header>
