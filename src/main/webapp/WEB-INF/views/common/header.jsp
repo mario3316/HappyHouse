@@ -39,6 +39,7 @@
 		     			<a class="dropdown-item" href="${root}/user/register">test</a>
 		     			<a class="dropdown-item" href="${root}/house/mvsearch">실거래 정보</a>
 		     			<a class="dropdown-item" href="${root}/search">상권 정보</a>
+		     			<a class="dropdown-item" href="${root}/subway/mvsearch">역세권 정보</a>
 		     		</div>
 			    </li>
 			    <li class="nav-item">
