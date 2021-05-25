@@ -412,10 +412,7 @@
 			</div>
 		</section>
 	</div>
-
-	<!-- Footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
+	
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
