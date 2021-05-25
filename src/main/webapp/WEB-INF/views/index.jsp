@@ -16,7 +16,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Happy House</title>
+<title>HAPPY HOUSE</title>
 <!-- Custom fonts for this template -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/simple-line-icons/css/simple-line-icons.css"
@@ -30,19 +30,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script	src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap" async defer></script>
 <script src="/js/main.js"></script>
-<script type="text/javascript">
-	function intlogin() {
-		if (document.getElementById("userid").value == "") {
-			alert("아이디 입력!!!");
-			return;
-		} else if (document.getElementById("userpwd").value == "") {
-			alert("비밀번호 입력!!!");
-			return;
-		} else {
-			$("#loginform").attr("action", "${root}/user/login").submit();
-		}
-	}
-	
+<script type="text/javascript">	
 	var locations = [];
 	locations = [ [ '도봉구', 37.6658609, 127.0317674 ],
 			[ '은평구', 37.6176125, 126.9227004 ],
@@ -157,7 +145,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/user/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>
@@ -209,87 +197,9 @@
     </div>
   </section>
    -->
+   
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
-	<!-- Footer -->
-	<footer class="footer bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#">About</a></li>
-						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Contact</a></li>
-						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Terms of Use</a></li>
-						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-					</ul>
-					<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
-						2020. All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-					<ul class="list-inline mb-0">
-						<li class="list-inline-item mr-3"><a href="#"> <i
-								class="fab fa-facebook fa-2x fa-fw"></i>
-						</a></li>
-						<li class="list-inline-item mr-3"><a href="#"> <i
-								class="fab fa-twitter-square fa-2x fa-fw"></i>
-						</a></li>
-						<li class="list-inline-item"><a href="#"> <i
-								class="fab fa-instagram fa-2x fa-fw"></i>
-						</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<!-- Login Modal Start -->
-	<div class="modal" id="loginModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Login</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<form id="loginform" method="post" action="">
-						<div class="form-group">
-							<label for="id">ID:</label> <input type="text"
-								class="form-control" name="userid" id="userid"
-								placeholder="Enter ID" value="${saveid}">
-						</div>
-						<div class="form-group">
-							<label for="pwd">Password:</label> <input type="password"
-								class="form-control" name="userpwd" id="userpwd"
-								placeholder="Enter Password">
-						</div>
-						<div class="form-group form-check" align="right">
-						    <label class="form-check-label">
-						      <input class="form-check-input" type="checkbox" id="idsave" name="idsave" value="saveok"${idck}> 아이디저장 
-						    </label>
-						</div>
-						<button type="button" id="login" class="btn btn-primary btn-block"
-							onclick="javascript=intlogin();">Login</button>
-					</form>
-				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<p>
-						Not a member? <a href="${root}/user/register">Sign Up</a>
-					</p>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!-- Login Modal End -->
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
