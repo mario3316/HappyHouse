@@ -289,7 +289,7 @@
 <body>
 	<!-- Navigation -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	
+
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>
@@ -368,8 +368,6 @@
 	
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
 </body>
 
 	</html>
