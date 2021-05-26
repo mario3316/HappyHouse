@@ -58,6 +58,11 @@
 				search();
 		});
 		
+		// 최근 검색어 버튼 클릭 시
+		$(document).on('click', "[id^=historybtn]", function() {
+			$("#word").val($(this).val());
+			search();
+		});
 	});
 	
 	// 상권 정보 검색(엔터/버튼)
@@ -66,6 +71,10 @@
 			alert("검색할 동을 입력해주세요!");
 			return;
 		}
+		
+		// 최근 검색어
+		setHistory();
+		bindHistoryAtButton();
 		
 		searchinfo = JSON.stringify({
 			"by" : $("#key").val(), 
@@ -77,6 +86,48 @@
 		deleteMarker();
 		getLatLng();
 		setMapOnAll(map);
+	}
+	
+	// 최근 검색어 localstorage에 처리
+	function setHistory() {
+		let history = JSON.parse(localStorage.getItem('historykey')) == null ? [] : JSON.parse(localStorage.getItem('historykey'));
+		let newHistory = {
+			id: Date.now(),
+			word: $("#word").val()
+		};
+		if (history == null) {
+			history.push(newHistory);			
+			localStorage.setItem('historykey', JSON.stringify(history));						
+		} else {
+			history = history.filter(historyinfo => historyinfo.word != $("#word").val());
+			if (history.length >= 3) history.pop();
+			history.unshift(newHistory);			
+			localStorage.setItem('historykey', JSON.stringify(history));			
+		}
+	}
+	// 최근 검색어 버튼과 bind
+	function bindHistoryAtButton() {
+		let history = JSON.parse(localStorage.getItem('historykey')) == null ? [] : JSON.parse(localStorage.getItem('historykey'));
+		
+		// 최근 검색어가 없을 경우
+		if (history.length == 0) {
+			$("#historydiv").css("display", "none");			
+		} else {
+			$("#historydivbtn").empty();
+			$("#historydiv").css("display", "");
+			let str = "";
+			for (let i = 0; i < history.length; i++) {
+				let str = `
+					<div class="col-3 pr-1">
+						<input type="button" id="historybtn${'${i}'}"
+								class="btn btn-block btn-sm btn-outline-light rounded-pill"
+								value="${'${history[i].word}'}">
+						</input>
+					</div>
+				`;
+				$("#historydivbtn").append(str);
+			}	
+		}		
 	}
 	
 	// 검색 전 이전 데이터 지우기
@@ -262,6 +313,14 @@
 		                     <div class="col-12 col-md-3">
                           		<button type="button" id="searchBtn" class="btn btn-block btn-lg btn-outline-light">검색</button>
                      		</div>
+                     		
+            				<!-- 최근 검색어 -->
+							<div id="historydiv" class="row mx-auto col-12 mt-3 mb-4">
+								<div class="col-md-3 pr-0">
+									<label>최근 검색어</label>
+								</div>
+								<div id="historydivbtn" class="row col-9"></div>
+							</div>
 						</div>
 					</form>
 				</div>
