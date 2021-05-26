@@ -28,8 +28,8 @@
 <link href="css/landing-page.min.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap" async defer></script>
-<script src="/js/main.js"></script>
+<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNsJy7d_yesjenAEdxqXGy-Jx_nN0sLdQ&callback=initMap" async defer></script>
+
 <script type="text/javascript">	
 	var locations = [];
 	locations = [ [ '도봉구', 37.6658609, 127.0317674 ],
@@ -151,9 +151,8 @@
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Happy House
-아파트 실거래 정보를 찾아보세요</h1>
+				<div class="col-xl-12 mx-auto">
+					<h1 class="mb-5">Happy House 실거래 정보를 찾아보세요</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto" align="center">
 					<a class="btn btn-block btn-lg btn-outline-light"
