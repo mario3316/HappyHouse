@@ -292,7 +292,7 @@
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.setContent("[" + marker.title + "] " + data.city + " " + data.dong);
 					infowindow.open(map, marker);
-					map.setZoom(15);
+					map.setZoom(16);
 					map.setCenter(marker.getPosition());
 				});
 				
