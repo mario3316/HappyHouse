@@ -32,6 +32,7 @@
 	
 	let map;
 	let housemarkers = [];
+	var detailInfo;
 	let markers = [];
 	var lat = 37.606991;
 	var lng = 127.0232185;
@@ -58,6 +59,11 @@
 				search();
 		});
 		
+		// 최근 검색어 버튼 클릭 시
+		$(document).on('click', "[id^=historybtn]", function() {
+			$("#word").val($(this).val());
+			search();
+		});
 	});
 	
 	// 상권 정보 검색(엔터/버튼)
@@ -67,18 +73,63 @@
 			return;
 		}
 		
+		// 최근 검색어
+		setHistory();
+		bindHistoryAtButton();
+		
 		searchinfo = JSON.stringify({
 			"by" : $("#key").val(), 
 			"keyword" : $("#word").val(),
 		});
 		
 		beforeDelete();
-		
 		getDeals(searchinfo);
-		
 		deleteMarker();
 		getLatLng();
 		setMapOnAll(map);
+	}
+	
+	// 최근 검색어 localstorage에 처리
+	function setHistory() {
+		let history = JSON.parse(localStorage.getItem('historykey')) == null ? [] : JSON.parse(localStorage.getItem('historykey'));
+		let newHistory = {
+			id: Date.now(),
+			word: $("#word").val()
+		};
+		if (history == null) {
+			history.push(newHistory);			
+			localStorage.setItem('historykey', JSON.stringify(history));						
+		} else {
+			history = history.filter(historyinfo => historyinfo.word != $("#word").val());
+			if (history.length >= 3) history.pop();
+			history.unshift(newHistory);			
+			localStorage.setItem('historykey', JSON.stringify(history));			
+		}
+	}
+	
+	// 최근 검색어 버튼과 bind
+	function bindHistoryAtButton() {
+		let history = JSON.parse(localStorage.getItem('historykey')) == null ? [] : JSON.parse(localStorage.getItem('historykey'));
+		
+		// 최근 검색어가 없을 경우
+		if (history.length == 0) {
+			$("#historydiv").css("display", "none");			
+		} else {
+			$("#historydivbtn").empty();
+			$("#historydiv").css("display", "");
+			let str = "";
+			for (let i = 0; i < history.length; i++) {
+				let str = `
+					<div class="col-3 pr-1">
+						<input type="button" id="historybtn${'${i}'}"
+								class="btn btn-block btn-sm btn-outline-light rounded-pill"
+								value="${'${history[i].word}'}">
+						</input>
+					</div>
+				`;
+				$("#historydivbtn").append(str);
+			}	
+		}		
 	}
 	
 	// 검색 전 이전 데이터 지우기
@@ -109,7 +160,7 @@
 	// data 받아오기
 	function getDeals(searchinfo) {
 		$.ajax({
-			url: '${root}/house/searchBy',  
+			url: '${root}/house/searchBy',
 			type: 'POST',
 			contentType: 'application/json;charset=utf-8',
 			dataType: 'json',
@@ -124,14 +175,67 @@
 		});		
 	}
 	
+	// 상세 정보 받아오기
+	function getDetail(detailInfo) {
+		jsondata = JSON.stringify({
+				"dong" : $(detailInfo).attr("dong"), 
+				"aptname" : $(detailInfo).attr("aptname"),
+		});
+		
+		$.ajax({
+			url: '${root}/house/detail',  
+			type: 'POST',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			data: jsondata,
+			success: function(datas) {
+				makeDetailTable(datas);
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
+		});
+	}
+	
+	function makeDetailTable(data){
+		var html = '';
+		
+		html += '<table class="table table-dark">';
+		html += '<thead>';
+		html += '<tr>';
+		html += '<th>아파트 명</th>';
+		html += '<th>동</th>';
+		html += '<th>주소</th>';
+		html += '<th>건축년도</th>';
+		html += '</tr>';
+		html += '</thead>';
+		html += '<tbody>';
+		html += '<tr>';
+		html += '<td>'+data.aptName+'</td>';
+		html += '<td>'+data.dong+'</td>';
+		html += '<td>'+data.jibun+'</td>';
+		html += '<td>'+data.buildYear+'</td>';
+		html += '</tr>';
+		html += '</tbody>';
+		html += '</table>';
+		
+		$("#DetailBody").empty();
+		$("#DetailBody").append(html);
+	}
+	
 	function makeTable(datas){
 		var html = '';
 		
 		for(key in datas){
-			html += '<tr>';
+			detailInfo = JSON.stringify({
+				"dong" : datas[key].dong, 
+				"aptname" : datas[key].aptName,
+			});
+			
+			html += '<tr onClick="getDetail(this)" dong=' + datas[key].dong + '  aptname=' + datas[key].aptName + '>';
 			html += '<td>'+datas[key].no+'</td>';
 			html += '<td>'+datas[key].dong+'</td>';
-			html += '<td><a href="/house/detail?no=' + datas[key].no + '"></a>' + datas[key].aptName + '</td>';
+			html += '<td>' + datas[key].aptName + '</td>';
 			html += '<td>'+datas[key].dealAmount+'</td>';
 			html += '</tr>';
 		}
@@ -142,14 +246,16 @@
 	
 	// marker에 정보 추가
 	function addMarker(datas) {
+		
 		var infowindow = new google.maps.InfoWindow();
 		
 		$(datas).each(function(i, data) {
+
 			const marker = new google.maps.Marker({
 				id: i,
 				title: data.aptName,
 				label: data.aptName,
-				position: new google.maps.LatLng(data.lat, data.lng),
+				position: new google.maps.LatLng(parseFloat(data.lat), parseFloat(data.lng)),
 				map: map
 			});
 
@@ -184,7 +290,6 @@
 <body>
 	<!-- Navigation -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>
@@ -209,6 +314,14 @@
 		                     <div class="col-12 col-md-3">
                           		<button type="button" id="searchBtn" class="btn btn-block btn-lg btn-outline-light">검색</button>
                      		</div>
+                     		
+                     		<!-- 최근 검색어 -->
+							<div id="historydiv" class="row mx-auto col-12 mt-3 mb-4">
+								<div class="col-md-3 pr-0">
+									<label>최근 검색어</label>
+								</div>
+								<div id="historydivbtn" class="row col-9"></div>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -220,7 +333,7 @@
 	<div class="container">
 	
     <!-- map start -->
-   	<div class="main col-lg-9 order-lg-2 ml-xl-auto">
+   	<div class="main col-lg-12 order-lg-2 ml-xl-auto">
       <div class="row girde-space-10">
          <div class="col-12 justify-content-center" id="map" style="width: 400px; height: 600px"></div>
       </div>
@@ -237,7 +350,6 @@
 					<th>동 이름</th>
 					<th>아파트 이름</th>
 					<th>거래금액</th>
-					<th>거래종류</th>
 				</tr>
 				</thead>
 				<tbody id="HouseBody">
@@ -245,6 +357,8 @@
 			</table>
 		</form>
 	</div>
+	
+	<div id="DetailBody"></div>
 	
 	</div>
 

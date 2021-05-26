@@ -13,9 +13,9 @@ public class BaseAddressServiceImpl implements BaseAddressService {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
-	public Map<String, String> getLatLngByDong(String dong) {	
+	public Map<String, String> getLatLngByDong(String dong) {
 		return sqlSession.getMapper(BaseAddressMapper.class).getLatLngByDong(dong);
 	}
 

@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.model.HouseDealDto;
@@ -45,12 +44,17 @@ public class HouseController {
 	@ResponseBody
 	@RequestMapping(value = "/searchBy", method = RequestMethod.POST)
 	public ResponseEntity<List<HouseViewDto>> searchBy(@RequestBody Map<String, String> map, Model model) {
+		// by , keyword
 		try {
 			List<HouseViewDto> viewList = new LinkedList<>();
 			List<HouseDealDto> dealList = dealService.search(map);
 
 			for (HouseDealDto deal : dealList) {
-				HouseInfoDto house = infoService.search(deal.getNo());
+				HouseInfoDto house = infoService.searchByDongAptname(deal.getDong(), deal.getAptName());
+
+				if (house == null)
+					continue;
+
 				HouseViewDto view = new HouseViewDto(deal.getNo(), deal.getDong(), deal.getAptName(), deal.getCode(),
 						deal.getDealAmount(), deal.getBuildYear(), deal.getDealYear(), deal.getDealMonth(),
 						deal.getDealDay(), deal.getArea(), deal.getFloor(), deal.getJibun(), deal.getType(),
@@ -71,16 +75,18 @@ public class HouseController {
 
 	}
 
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String detail(@RequestParam("no") int no, Model model) {
+	@ResponseBody
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	public ResponseEntity<HouseInfoDto> detail(@RequestBody Map<String, String> map, Model model) {
 		try {
-			HouseInfoDto house = infoService.search(no);
-			model.addAttribute("house", house);
-			return "house/search_detail";
+			HouseInfoDto house = infoService.searchByDongAptname(map.get("dong"), map.get("aptname"));
+			if (house != null)
+				return new ResponseEntity<HouseInfoDto>(house, HttpStatus.OK);
+			else
+				return new ResponseEntity(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("msg", "상세 정보 가져오기 중 문제가 발생했습니다.");
-			return "error/error";
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
 }

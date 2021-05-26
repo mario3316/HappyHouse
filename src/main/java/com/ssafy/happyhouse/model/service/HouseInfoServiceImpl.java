@@ -1,6 +1,8 @@
 package com.ssafy.happyhouse.model.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -22,6 +24,14 @@ public class HouseInfoServiceImpl implements HouseInfoService {
 	@Override
 	public HouseInfoDto search(int no) throws SQLException {
 		return sqlSession.getMapper(HouseInfoMapper.class).search(no);
+	}
+
+	@Override
+	public HouseInfoDto searchByDongAptname(String dong, String aptname) throws Exception {
+		Map<String, String> param = new HashMap<>();
+		param.put("dong", dong);
+		param.put("aptname", aptname);
+		return sqlSession.getMapper(HouseInfoMapper.class).searchByDongAptname(param);
 	}
 
 }
