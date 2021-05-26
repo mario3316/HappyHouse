@@ -73,9 +73,7 @@
 		});
 		
 		beforeDelete();
-		
 		getDeals(searchinfo);
-		
 		deleteMarker();
 		getLatLng();
 		setMapOnAll(map);
@@ -142,14 +140,16 @@
 	
 	// marker에 정보 추가
 	function addMarker(datas) {
+		
 		var infowindow = new google.maps.InfoWindow();
 		
 		$(datas).each(function(i, data) {
+
 			const marker = new google.maps.Marker({
 				id: i,
 				title: data.aptName,
 				label: data.aptName,
-				position: new google.maps.LatLng(data.lat, data.lng),
+				position: new google.maps.LatLng(parseFloat(data.lat), parseFloat(data.lng)),
 				map: map
 			});
 
@@ -184,7 +184,6 @@
 <body>
 	<!-- Navigation -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
-
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
 		<div class="overlay"></div>

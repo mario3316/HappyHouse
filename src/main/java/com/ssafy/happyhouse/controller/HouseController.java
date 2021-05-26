@@ -45,12 +45,17 @@ public class HouseController {
 	@ResponseBody
 	@RequestMapping(value = "/searchBy", method = RequestMethod.POST)
 	public ResponseEntity<List<HouseViewDto>> searchBy(@RequestBody Map<String, String> map, Model model) {
+		// by , keyword
 		try {
 			List<HouseViewDto> viewList = new LinkedList<>();
 			List<HouseDealDto> dealList = dealService.search(map);
 
 			for (HouseDealDto deal : dealList) {
-				HouseInfoDto house = infoService.search(deal.getNo());
+				HouseInfoDto house = infoService.searchByDongAptname(deal.getDong(), deal.getAptName());
+
+				if (house == null)
+					continue;
+
 				HouseViewDto view = new HouseViewDto(deal.getNo(), deal.getDong(), deal.getAptName(), deal.getCode(),
 						deal.getDealAmount(), deal.getBuildYear(), deal.getDealYear(), deal.getDealMonth(),
 						deal.getDealDay(), deal.getArea(), deal.getFloor(), deal.getJibun(), deal.getType(),

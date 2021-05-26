@@ -1,0 +1,377 @@
+[2m2021-05-26 11:06:13.712[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mc.s.happyhouse.HappyhouseApplication    [0;39m [2m:[0;39m Starting HappyhouseApplication using Java 15.0.2 on DESKTOP-V1O1U9Q with PID 18860 (C:\spring_workspace\HappyHouse\target\classes started by Jinho in C:\spring_workspace\HappyHouse)
+[2m2021-05-26 11:06:13.718[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mc.s.happyhouse.HappyhouseApplication    [0;39m [2m:[0;39m No active profile set, falling back to default profiles: default
+[2m2021-05-26 11:06:13.768[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.e.DevToolsPropertyDefaultsPostProcessor[0;39m [2m:[0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2m2021-05-26 11:06:13.769[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m.e.DevToolsPropertyDefaultsPostProcessor[0;39m [2m:[0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2m2021-05-26 11:06:14.304[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.m.s.b.a.MybatisAutoConfiguration      [0;39m [2m:[0;39m Searching for mappers annotated with @Mapper
+[2m2021-05-26 11:06:14.305[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.m.s.b.a.MybatisAutoConfiguration      [0;39m [2m:[0;39m Using auto-configuration base package 'com.ssafy.happyhouse'
+[2m2021-05-26 11:06:14.415[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36morg.apache.ibatis.logging.LogFactory    [0;39m [2m:[0;39m Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[2m2021-05-26 11:06:14.436[0;39m [33m WARN[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.m.s.mapper.ClassPathMapperScanner     [0;39m [2m:[0;39m No MyBatis mapper was found in '[com.ssafy.happyhouse]' package. Please check your configuration.
+[2m2021-05-26 11:06:15.044[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 8080 (http)
+[2m2021-05-26 11:06:15.053[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.coyote.http11.Http11NioProtocol     [0;39m [2m:[0;39m Initializing ProtocolHandler ["http-nio-8080"]
+[2m2021-05-26 11:06:15.054[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Starting service [Tomcat]
+[2m2021-05-26 11:06:15.055[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36morg.apache.catalina.core.StandardEngine [0;39m [2m:[0;39m Starting Servlet engine: [Apache Tomcat/9.0.45]
+[2m2021-05-26 11:06:15.238[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36morg.apache.jasper.servlet.TldScanner    [0;39m [2m:[0;39m At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[2m2021-05-26 11:06:15.247[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.c.c.C.[.[localhost].[/happyhouse]   [0;39m [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[2m2021-05-26 11:06:15.247[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 1477 ms
+[2m2021-05-26 11:06:15.351[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@3e4103f3
+[2m2021-05-26 11:06:15.518[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\baseaddress.xml]'
+[2m2021-05-26 11:06:15.526[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\commercial.xml]'
+[2m2021-05-26 11:06:15.531[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\housedeal.xml]'
+[2m2021-05-26 11:06:15.537[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\houseinfo.xml]'
+[2m2021-05-26 11:06:15.548[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\member.xml]'
+[2m2021-05-26 11:06:15.563[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\notice.xml]'
+[2m2021-05-26 11:06:15.566[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.mybatis.spring.SqlSessionFactoryBean  [0;39m [2m:[0;39m Parsed mapper file: 'file [C:\spring_workspace\HappyHouse\target\classes\mapper\subway.xml]'
+[2m2021-05-26 11:06:15.775[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.s.concurrent.ThreadPoolTaskExecutor [0;39m [2m:[0;39m Initializing ExecutorService 'applicationTaskExecutor'
+[2m2021-05-26 11:06:15.851[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.AdminController:
+	{GET [/admin/user/{userid}]}: userInfo(String)
+	{POST [/admin/search]}: search(Map)
+	{GET [/admin/user]}: userList()
+	{POST [/admin/user]}: userRegister(MemberDto)
+	{DELETE [/admin/user/{userid}]}: userDelete(String)
+	{PUT [/admin/user]}: userModify(MemberDto)
+[2m2021-05-26 11:06:15.854[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.HomeController:
+	{GET [/]}: home()
+[2m2021-05-26 11:06:15.856[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.HouseController:
+	{GET [/house/detail]}: detail(int,Model)
+	{POST [/house/searchBy]}: searchBy(Map,Model)
+	{GET [/house/mvsearch]}: mvsearch()
+[2m2021-05-26 11:06:15.858[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.NoticeController:
+	{GET [/notice/list]}: list(Map,Model)
+	{POST [/notice/write]}: write(NoticeDto,MultipartFile[],Model,HttpSession)
+	{GET [/notice/write]}: write()
+	{GET [/notice/delete]}: delete(int,Model)
+	{GET [/notice/download]}: downloadFile(String,String,String,HttpSession)
+	{GET [/notice/modify]}: modify(int,Model)
+	{POST [/notice/modify]}: modify(NoticeDto,Model,HttpSession)
+[2m2021-05-26 11:06:15.859[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.SearchController:
+	{GET [/search]}: mvSearchCafe()
+	{POST [/search/convenience]}: searchConvenience(Map)
+	{GET [/search/{dong}]}: getLatLngByDong(String)
+	{POST [/search/cafe]}: searchCafe(Map)
+[2m2021-05-26 11:06:15.859[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.SubwayController:
+	{POST [/subway/searchBy]}: searchBy(Map,Model)
+	{GET [/subway/mvsearch]}: mvsearch()
+[2m2021-05-26 11:06:15.860[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	c.s.h.c.UserController:
+	{GET [/user/list]}: list()
+	{POST [/user/register]}: register(MemberDto)
+	{GET [/user/{userid}]}: userInfo(String)
+	{POST [/user/login]}: login(Map,Model,HttpSession,HttpServletResponse)
+	{GET [/user/register]}: mvregister()
+	{GET [/user/logout]}: logout(HttpSession)
+[2m2021-05-26 11:06:15.862[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+[2m2021-05-26 11:06:15.879[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.a.w.s.WelcomePageHandlerMapping   [0;39m [2m:[0;39m Adding welcome page template: index
+[2m2021-05-26 11:06:15.897[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 'beanNameHandlerMapping' {}
+[2m2021-05-26 11:06:15.912[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36m_.s.web.servlet.HandlerMapping.Mappings [0;39m [2m:[0;39m 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [Classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [Classpath [META-INF/resources/], Classpath [resources/], Classpath [static/], Classpath [public/], ServletContext [/]]}
+[2m2021-05-26 11:06:15.943[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.m.s.b.a.MybatisAutoConfiguration      [0;39m [2m:[0;39m Not found configuration for registering mapper bean using @MapperScan, MapperFactoryBean and MapperScannerConfigurer.
+[2m2021-05-26 11:06:16.099[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.d.a.OptionalLiveReloadServer      [0;39m [2m:[0;39m LiveReload server is running on port 35729
+[2m2021-05-26 11:06:16.115[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.a.coyote.http11.Http11NioProtocol     [0;39m [2m:[0;39m Starting ProtocolHandler ["http-nio-8080"]
+[2m2021-05-26 11:06:16.166[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat started on port(s): 8080 (http) with context path '/happyhouse'
+[2m2021-05-26 11:06:16.176[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mc.s.happyhouse.HappyhouseApplication    [0;39m [2m:[0;39m Started HappyhouseApplication in 2.776 seconds (JVM running for 4.104)
+[2m2021-05-26 11:06:27.971[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-4][0;39m [36mo.a.c.c.C.[.[localhost].[/happyhouse]   [0;39m [2m:[0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2m2021-05-26 11:06:27.972[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-4][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Initializing Servlet 'dispatcherServlet'
+[2m2021-05-26 11:06:27.972[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-4][0;39m [36mo.s.web.servlet.DispatcherServlet       [0;39m [2m:[0;39m Completed initialization in 0 ms
+[2m2021-05-26 11:06:28.877[0;39m [33m WARN[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-4][0;39m [36mo.a.c.util.SessionIdGeneratorBase       [0;39m [2m:[0;39m Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [200] milliseconds.
+[2m2021-05-26 11:10:29.086[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36morg.mybatis.spring.SqlSessionUtils      [0;39m [2m:[0;39m Creating a new SqlSession
+[2m2021-05-26 11:10:29.090[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36morg.mybatis.spring.SqlSessionUtils      [0;39m [2m:[0;39m SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5222d682] was not registered for synchronization because synchronization is not active
+[2m2021-05-26 11:10:29.098[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m HikariPool-1 - configuration:
+[2m2021-05-26 11:10:29.100[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m allowPoolSuspension.............false
+[2m2021-05-26 11:10:29.100[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m autoCommit......................true
+[2m2021-05-26 11:10:29.100[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m catalog.........................none
+[2m2021-05-26 11:10:29.100[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m connectionInitSql...............none
+[2m2021-05-26 11:10:29.100[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m connectionTestQuery.............none
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m connectionTimeout...............30000
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m dataSource......................none
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m dataSourceClassName.............none
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m dataSourceJNDI..................none
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m dataSourceProperties............{password=<masked>}
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m driverClassName................."com.mysql.cj.jdbc.Driver"
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m exceptionOverrideClassName......none
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m healthCheckProperties...........{}
+[2m2021-05-26 11:10:29.101[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m healthCheckRegistry.............none
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m idleTimeout.....................600000
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m initializationFailTimeout.......1
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m isolateInternalQueries..........false
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m jdbcUrl.........................jdbc:mysql://127.0.0.1:3306/ssafyhouse?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m leakDetectionThreshold..........0
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m maxLifetime.....................1800000
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m maximumPoolSize.................10
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m metricRegistry..................none
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m metricsTrackerFactory...........none
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m minimumIdle.....................10
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m password........................<masked>
+[2m2021-05-26 11:10:29.102[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m poolName........................"HikariPool-1"
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m readOnly........................false
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m registerMbeans..................false
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m scheduledExecutor...............none
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m schema..........................none
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m threadFactory...................internal
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m transactionIsolation............default
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m username........................"ssafy"
+[2m2021-05-26 11:10:29.103[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariConfig          [0;39m [2m:[0;39m validationTimeout...............5000
+[2m2021-05-26 11:10:29.103[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m HikariPool-1 - Starting...
+[2m2021-05-26 11:10:29.210[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.pool.PoolBase         [0;39m [2m:[0;39m HikariPool-1 - Failed to create/setup connection: CLIENT_PLUGIN_AUTH is required
+[2m2021-05-26 11:10:29.211[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.pool.HikariPool       [0;39m [2m:[0;39m HikariPool-1 - Cannot acquire connection from data source
+
+java.sql.SQLNonTransientConnectionException: CLIENT_PLUGIN_AUTH is required
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:79)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:158)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:116)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:79)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy72.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy90.login(Unknown Source)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl.login(UserServiceImpl.java:29)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl$$FastClassBySpringCGLIB$$2f5bdd85.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl$$EnhancerBySpringCGLIB$$4c372a03.login(<generated>)
+	at com.ssafy.happyhouse.controller.UserController.login(UserController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: CLIENT_PLUGIN_AUTH is required
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:115)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1350)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:157)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:953)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:823)
+	... 101 common frames omitted
+
+[2m2021-05-26 11:10:30.214[0;39m [31mERROR[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.zaxxer.hikari.pool.HikariPool       [0;39m [2m:[0;39m HikariPool-1 - Exception during pool initialization.
+
+java.sql.SQLNonTransientConnectionException: CLIENT_PLUGIN_AUTH is required
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:79)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:833)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:453)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:246)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:158)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:116)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:79)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80)
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67)
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:89)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	at com.sun.proxy.$Proxy72.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy90.login(Unknown Source)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl.login(UserServiceImpl.java:29)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl$$FastClassBySpringCGLIB$$2f5bdd85.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at com.ssafy.happyhouse.model.service.UserServiceImpl$$EnhancerBySpringCGLIB$$4c372a03.login(<generated>)
+	at com.ssafy.happyhouse.controller.UserController.login(UserController.java:36)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: CLIENT_PLUGIN_AUTH is required
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:115)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1350)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:157)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:953)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:823)
+	... 101 common frames omitted
+
+[2m2021-05-26 11:10:30.218[0;39m [32mDEBUG[0;39m [35m18860[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36morg.mybatis.spring.SqlSessionUtils      [0;39m [2m:[0;39m Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5222d682]
+[2m2021-05-26 11:27:48.099[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[n(31)-127.0.0.1][0;39m [36minMXBeanRegistrar$SpringApplicationAdmin[0;39m [2m:[0;39m Application shutdown requested.
+[2m2021-05-26 11:27:48.150[0;39m [32m INFO[0;39m [35m18860[0;39m [2m---[0;39m [2m[n(31)-127.0.0.1][0;39m [36mo.s.s.concurrent.ThreadPoolTaskExecutor [0;39m [2m:[0;39m Shutting down ExecutorService 'applicationTaskExecutor'

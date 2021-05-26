@@ -11,5 +11,12 @@
 	<select id="searchByDong" parameterType="String" resultType="HouseInfoDto">
 		select * from houseinfo where dong like CONCAT('%', #{dong}, '%')
 	</select>
+	
+	<select id="searchByDongAptname" parameterType="map" resultType="HouseInfoDto">
+		select * from houseinfo
+		where dong = #{dong} and aptname = #{aptname}
+		limit 1;
+	</select>
+
 
 </mapper>
