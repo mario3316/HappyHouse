@@ -49,6 +49,7 @@
 	}
 	
 	$(document).ready(function() {
+		bindHistoryAtButton();
 		let searchinfo;
 		
 		// 검색 버튼 클릭 시
@@ -149,7 +150,7 @@
 					lat: parseFloat(latlng.lat),
 					lng: parseFloat(latlng.lng),
 				});
-				map.setZoom(14);
+				map.setZoom(15);
 			},
 			error: function(xhr,status,msg){
 				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
@@ -178,8 +179,8 @@
 	// 상세 정보 받아오기
 	function getDetail(detailInfo) {
 		jsondata = JSON.stringify({
-				"dong" : $(detailInfo).attr("dong"), 
-				"aptname" : $(detailInfo).attr("aptname"),
+			"dong" : $(detailInfo).attr("dong"), 
+			"aptname" : $(detailInfo).attr("aptname"),
 		});
 		
 		$.ajax({
@@ -200,31 +201,39 @@
 	function makeDetailTable(data){
 		var html = '';
 		
-		html += '<table class="table table-dark">';
+		html += '<table class="table table-hover text-center">';
 		html += '<thead>';
-		html += '<tr>';
-		html += '<th>아파트 명</th>';
-		html += '<th>동</th>';
-		html += '<th>주소</th>';
-		html += '<th>건축년도</th>';
-		html += '</tr>';
+  		html += '<colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup>';
+		html += 	'<tr>';
+		html += 		'<th>아파트 명</th>';
+		html += 		'<th>동</th>';
+		html += 		'<th>주소</th>';
+		html += 		'<th>건축년도</th>';
+		html += 	'</tr>';
 		html += '</thead>';
 		html += '<tbody>';
-		html += '<tr>';
-		html += '<td>'+data.aptName+'</td>';
-		html += '<td>'+data.dong+'</td>';
-		html += '<td>'+data.jibun+'</td>';
-		html += '<td>'+data.buildYear+'</td>';
-		html += '</tr>';
+		html += 	'<tr>';
+		html += 		'<td>'+data.aptName+'</td>';
+		html += 		'<td>'+data.dong+'</td>';
+		html +=	 		'<td>'+data.jibun+'</td>';
+		html += 		'<td>'+data.buildYear+'</td>';
+		html += 	'</tr>';
 		html += '</tbody>';
 		html += '</table>';
+
+		map.setCenter({
+			lat: parseFloat(data.lat),
+			lng: parseFloat(data.lng),
+		});
+		map.setZoom(16);
 		
 		$("#DetailBody").empty();
 		$("#DetailBody").append(html);
 	}
 	
-	function makeTable(datas){
-		var html = '';
+	function makeTable(datas) {
+		$("#HouseBody").empty();
+		$("#HouseBody").append(`<div class="media margin-clear"><h6 class="mb-0">총 거래수: ${'${datas.length}'}</h6></div><hr>`);
 		
 		for(key in datas){
 			detailInfo = JSON.stringify({
@@ -232,16 +241,19 @@
 				"aptname" : datas[key].aptName,
 			});
 			
-			html += '<tr onClick="getDetail(this)" dong=' + datas[key].dong + '  aptname=' + datas[key].aptName + '>';
-			html += '<td>'+datas[key].no+'</td>';
-			html += '<td>'+datas[key].dong+'</td>';
-			html += '<td>' + datas[key].aptName + '</td>';
-			html += '<td>'+datas[key].dealAmount+'</td>';
-			html += '</tr>';
+ 			var str = `
+	      		<div class="media margin-clear">
+	                <div class="media-body" onClick="getDetail(this)" dong=${'${datas[key].dong}'} aptname=${'${datas[key].aptName}'}>
+ 	                   <h4 class="text-primary">${'${datas[key].aptName}'}</h4>
+	                   <h6 class="media-heading" id='deal'>거래금액 : ${'${datas[key].dealAmount}'}</h6>
+	                   <h6 class="media-heading" id='deal'>면적: ${'${datas[key].area}'}</h6>
+	                   <p class="small margin-clear mb-0"><i class="fa fa-calendar pr-10"></i>${'${datas[key].dealYear}'}. ${'${datas[key].dealMonth}'}. ${'${datas[key].dealDay}'}</p>
+	            	</div>
+	      		</div>
+	 			<hr>
+ 			`;
+			$("#HouseBody").append(str);
 		}
-		
-		$("#HouseBody").empty();
-		$("#HouseBody").append(html);
 	}
 	
 	// marker에 정보 추가
@@ -263,7 +275,7 @@
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent("[" + marker.title + "] " + " " + data.dong);
 				infowindow.open(map, marker);
-				map.setZoom(15);
+				map.setZoom(16);
 				map.setCenter(marker.getPosition());
 			});
 			
@@ -290,13 +302,14 @@
 <body>
 	<!-- Navigation -->
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
+	
 	<!-- Masthead -->
-	<header class="masthead text-white text-center">
+	<header class="masthead pt-5 pb-2 text-white text-center">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Happy House 아파트 실거래 정보를 찾아보세요</h1>
+				<div class="col-xl-10 mx-auto">
+					<h1 class="mt-5 mb-4">Happy House 실거래 정보를 찾아보세요</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form method="post" action="${root}/house/searchBy">
@@ -330,36 +343,34 @@
 	</header>
 
 	<!-- 디자인 -->
-	<div class="container">
+	<div class="container mt-4 mb-4">
+		<section class="main-container">
+			<div class="container">
+				<div class="row">
+					<!-- map start -->
+   					<div class="main col-lg-9 order-lg-2 ml-xl-auto">
+      					<div class="row girde-space-10">
+         					<div class="col-12 justify-content-center" id="map" style="width: 400px; height: 600px"></div>
+      					</div>
+						<div class="col-12 mt-2" id="DetailBody"></div>
+   					</div>   
+   					<!-- map end -->
 	
-    <!-- map start -->
-   	<div class="main col-lg-12 order-lg-2 ml-xl-auto">
-      <div class="row girde-space-10">
-         <div class="col-12 justify-content-center" id="map" style="width: 400px; height: 600px"></div>
-      </div>
-   	</div>   
-   	<!-- map end -->
-	
-	<div align="center">
-		<form>
-			<h4 class="mt-3">상세 설명을 보려면 아파트 이름을 클릭하세요.</h4>
-			<table class="table table-dark" border='1' id="HouseTable">
-				<thead>
-				<tr>
-					<th>no</th>
-					<th>동 이름</th>
-					<th>아파트 이름</th>
-					<th>거래금액</th>
-				</tr>
-				</thead>
-				<tbody id="HouseBody">
-				</tbody>
-			</table>
-		</form>
-	</div>
-	
-	<div id="DetailBody"></div>
-	
+					
+					<!-- sidebar start -->
+					<aside class="col-lg-2 order-lg-1">
+						<div class="sidebar" id="sidebar">
+							<h3 class="title">실거래가</h3>
+							<hr>
+							
+							<form>
+								<div id="HouseBody"></div>
+							</form>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
 	</div>
 
 	<!-- Footer -->

@@ -394,17 +394,6 @@
 			                    	<h6 id="convcount"></h6>
 		                    	</div>
 	                  		</div>
-	                		<hr>
-	                  		
-	                  		<!-- div class="media margin-clear">
-			                    <div class="media-body">
-			                      <h4><a href='javascript:moveMap(37.5781448,127.0099877,17);'>MID그린(1동)</a></h4>
-			                      <h6 class="media-heading"  id='deal'>거래금액 :     26,900만원</h6>
-			                      <h6 class="media-heading"  id='deal'>면적: 59.55</h6>
-			                      <p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>2019. 7. 25</p>
-		                    	</div>
-	                  		</div>
-	                 		<hr-->
 						</div>
 					</aside>
 					<!-- sidebar end -->

@@ -36,7 +36,6 @@
 			          Search
 			        </a>
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		     			<a class="dropdown-item" href="${root}/user/register">test</a>
 		     			<a class="dropdown-item" href="${root}/house/mvsearch">실거래 정보</a>
 		     			<a class="dropdown-item" href="${root}/search">상권 정보</a>
 		     			<a class="dropdown-item" href="${root}/subway/mvsearch">역세권 정보</a>

@@ -37,8 +37,8 @@ public class SearchController {
 	private BaseAddressService baseAddressService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String mvSearchCafe() {
-		return "search/cafe";
+	public String mvSearchCommercial() {
+		return "search/commercial";
 	}
 
 	@ResponseBody
