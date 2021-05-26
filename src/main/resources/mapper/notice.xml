@@ -65,7 +65,7 @@
 		</if>
 	</select>
 	
-	<select id="getNotice" parameterType="int" resultType="noticeDto">
+	<select id="getNotice" parameterType="int" resultMap="noticeList">
 		select no, userid, subject, content, regtime
 		from notice
 		where no = #{no}

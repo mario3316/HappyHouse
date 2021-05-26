@@ -107,6 +107,14 @@ public class NoticeController {
 //			return "error/error";
 //		}
 	}
+
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(@RequestParam("noticeno") int noticeno, Model model) throws Exception {
+		NoticeDto noticeDto = noticeService.getNotice(noticeno);
+		System.out.println("==========================>"+noticeDto.getFileInfos());
+		model.addAttribute("notice", noticeDto);
+		return "notice/detail";
+	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modify(@RequestParam("noticeno") int noticeno, Model model) {

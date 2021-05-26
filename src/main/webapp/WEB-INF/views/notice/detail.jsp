@@ -20,26 +20,9 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 		<!-- Custom styles for this template -->
 		<link href="${root}/css/landing-page.min.css" rel="stylesheet">
+		
 		<script type="text/javascript">
-		$(document).ready(function() {
-			
-			$('#mvWriteBtn').focusin(function() {
-				$(location).attr("href", "${root}/notice/write");
-			});
-			
-			$("#searchBtn").click(function() {
-				
-				if($("#sword").val() == "") {
-					alert("모든 목록 조회!!");
-				} 
-				$("#searchform").attr("action", "${root}/notice/list").submit();
-			});
-			
-			$(".page-item").click(function() {
-				$("#pg").val(($(this).attr("data-pg")));
-				$("#pageform").attr("action", "${root}/notice/list").submit();
-			});
-			
+		$(document).ready(function() {			
 			//file download
             $('.filedown').click(function() {
         		$(document).find('[name="sfolder"]').val($(this).attr('sfolder'));
@@ -68,53 +51,64 @@
 	  <br><br><br>
 	  <h2>공지사항</h2>
 	
-	<div class="d-flex">
-		<div class="form-inline mr-auto mt-3 mb-3">
- 			<form id="searchform" method="get" class="form-inline" action="">
- 				<input type="hidden" name="pg" id="pg" value="1">
-				<div class="float-left">
-			  		<select class="form-control" name="key" id="skey">
-				    	<option value="userid" selected="selected">아이디</option>
-				    	<option value="no">글번호</option>
-				    	<option value="subject">제목</option>
-					</select>
-					<input type="text" class="form-control" placeholder="검색어 입력." name="word" id="sword">
-					<button type="button" id="searchBtn" class="btn btn-outline-primary">검색</button>
-  				</div>
- 			</form>		  
-		</div>
-	    <div class="p-2 mt-3 mb-3">
-	 		<button type="button" id="mvWriteBtn" class="btn btn-outline-primary">글쓰기</button>
-	    </div>
+		
+		<table class="table mt-4 mb-2">
+			<tr>
+				<th style="width: 20%">제목</th>
+				<td>${notice.subject}</td>
+			</tr>
+			<tr>
+				<th style="width: 20%">작성자</th>
+				<td>${notice.userid}</td>
+			</tr>
+			<tr>
+				<th style="width: 20%">작성일</th>
+				<td>${notice.regtime}</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="mt-4 mb-4">
+						${notice.content}
+					</div>
+				</td>
+			</tr>
+		    <c:if test="${!empty notice.fileInfos}">
+		    	<tr>
+		        	<td colspan="2">
+						<div class="row">
+						<c:forEach var="file" items="${notice.fileInfos}">
+						<ul class="list-group list-group-horizontal mr-2">
+								<li class="list-group-item">
+								<a href="#" class="filedown text-dark" sfolder="${file.saveFolder}" sfile="${file.saveFile}" ofile="${file.originFile}">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+	  							<path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+								</svg>${file.originFile} [다운로드]
+								</a>
+						</ul>
+						</c:forEach>
+						</div>
+					</td>
+		      	</tr>
+			</c:if>
+			
+		    <c:if test="${userinfo.userid == notice.userid}">
+	    	<tr>
+	        	<td colspan="3">
+	        		<div class="d-flex">
+	        		<div class="mr-auto p-2">
+						<a href="javascript:history.back();" class="btn btn-light">뒤로가기</a>
+	        		</div>
+					
+	        		<div class="p-2">
+						<a href="${root}/notice/modify?noticeno=${notice.no}" class="btn btn-light">수정</a>
+						<a href="${root}/notice/delete?noticeno=${notice.no}" class="btn btn-light">삭제</a>
+	        		</div>
+	        		</div>
+				</td>
+	   		</tr>
+		   </c:if>
+		</table>
 	</div>
-
-	  <c:if test="${notices.size() != 0}">
-		  <table class="table table-hover">
-	  		<colgroup>
-	            <col width="120">
-	            <col width="*">
-	            <col width="120">
-	            <col width="180">
-	        </colgroup>
-		  	<thead>
-		  		<tr>
-		  			<th class="text-center">NO</th>
-		  			<th class="text-center">제목</th>
-		  			<th class="text-center">작성자</th>
-		  			<th class="text-center">날짜</th>
-	  			</tr>
-		  	</thead>
-		  	
-		  	<tbody>
-		  		<c:forEach var="notice" items="${notices}">
-			  		<tr>
-			  			<td class="text-center">${notice.no}</td>
-			  			<td><a href="${root}/notice/detail?noticeno=${notice.no}" class="text-secondary link-primary">${notice.subject}</a></td>
-			  			<td class="text-center">${notice.userid}</td>
-			  			<td class="text-center">${notice.regtime}</td>
-			  		</tr>
-			  	</c:forEach>
-		  	</tbody>
 		  	<!-- 
 		    <tbody>
 		      <tr class="table-info">
@@ -147,25 +141,6 @@
 		      </tr>
 		      </c:if>
 		    </tbody-->
-		  </table>
-	  	<table>
-	  	<tr>
-	  	<td>
-	  	${navigation.navigator}
-	  	</td>
-	  	</tr>
-	  	</table>
-	  </c:if>
-	  <c:if test="${notices.size() == 0}">
-	  <table class="table table-active">
-	    <tbody>
-	      <tr class="table-info" align="center">
-	        <td>작성된 글이 없습니다.</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  </c:if>
-	  </div>
 	  
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	  
