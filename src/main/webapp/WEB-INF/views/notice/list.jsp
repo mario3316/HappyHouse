@@ -49,7 +49,6 @@
         	});
 			
 		});
-
 		</script>
 	</head>
 	<body>	
@@ -66,77 +65,89 @@
 	
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div class="container" align="center">
-		<br><br><br><br>
-		<h2>공지사항</h2>
-	    <p>공지사항 필독</p>  
-	    <table class="table table-borderless">
-	  	<tr>
-	  		<td align="right"><button type="button" id="mvWriteBtn" class="btn btn-link">글쓰기</button></td>
-	  	</tr>
-	    </table>
-	    <form id="searchform" method="get" class="form-inline" action="">
-	  <input type="hidden" name="pg" id="pg" value="1">
-	  <table class="table table-borderless">
-	  	<tr>
-	  		<td align="right">
-		  	  <select class="form-control" name="key" id="skey">
-			    <option value="userid" selected="selected">아이디</option>
-			    <option value="noticeno">글번호</option>
-			    <option value="subject">제목</option>
-			  </select>
-			  <input type="text" class="form-control" placeholder="검색어 입력." name="word" id="sword">
-			  <button type="button" id="searchBtn" class="btn btn-primary">검색</button>
-			</td>
-	  	</tr>
-	  </table>
-	  </form>
-	  <!-- <table class="table table-borderless">
-	  	<tr>
-	  		<td align="right">
-		  	  <select class="form-control" name="spp" id="spp" onchange="javascript:countList();">
-			    <option value="10" selected="selected">10개씩보기</option>
-			    <option value="20">20개씩보기</option>
-			    <option value="50">50개씩보기</option>
-			  </select>
-			</td>
-	  	</tr>
-	  </table> -->
+	  <br><br><br>
+	  <h2>공지사항</h2>
+	
+	<div class="d-flex">
+		<div class="form-inline mr-auto mt-3 mb-3">
+ 			<form id="searchform" method="get" class="form-inline" action="">
+ 				<input type="hidden" name="pg" id="pg" value="1">
+				<div class="float-left">
+			  		<select class="form-control" name="key" id="skey">
+				    	<option value="userid" selected="selected">아이디</option>
+				    	<option value="no">글번호</option>
+				    	<option value="subject">제목</option>
+					</select>
+					<input type="text" class="form-control" placeholder="검색어 입력." name="word" id="sword">
+					<button type="button" id="searchBtn" class="btn btn-outline-primary">검색</button>
+  				</div>
+ 			</form>		  
+		</div>
+	    <div class="p-2 mt-3 mb-3">
+	 		<button type="button" id="mvWriteBtn" class="btn btn-outline-primary">글쓰기</button>
+	    </div>
+	</div>
+
 	  <c:if test="${notices.size() != 0}">
-	  	<c:forEach var="notice" items="${notices}">
-	  <table class="table table-active">
-	    <tbody>
-	      <tr class="table-info">
-	        <td>작성자 : ${notice.userid}</td>
-	        <td align="right">작성일 : ${notice.regtime}</td>
-	      </tr>
-	      <tr>
-	        <td colspan="2" class="table-danger"><strong>${notice.noticeno}. ${notice.subject}</strong></td>
-	      </tr>
-	      <tr>
-	        <td colspan="2">${notice.content}</td>
-	      </tr>
-	      <c:if test="${!empty notice.fileInfos}">
-	      <tr>
-	        <td colspan="2">
-			<ul>
-				<c:forEach var="file" items="${notice.fileInfos}">
-				<li>${file.originFile} <a href="#" class="filedown" sfolder="${file.saveFolder}" sfile="${file.saveFile}" ofile="${file.originFile}">[다운로드]</a>
-				</c:forEach>
-			</ul>
-			</td>
-	      </tr>
-	      </c:if>
-	      <c:if test="${userinfo.userid == notice.userid}">
-	      <tr>
-	        <td colspan="2">
-			<a href="${root}/notice/modify?noticeno=${notice.noticeno}">수정</a>
-			<a href="${root}/notice/delete?noticeno=${notice.noticeno}">삭제</a>
-			</td>
-	      </tr>
-	      </c:if>
-	    </tbody>
-	  </table>
-	  	</c:forEach>
+		  <table class="table table-hover">
+	  		<colgroup>
+	            <col width="120">
+	            <col width="*">
+	            <col width="120">
+	            <col width="180">
+	        </colgroup>
+		  	<thead>
+		  		<tr>
+		  			<th class="text-center">NO</th>
+		  			<th class="text-center">제목</th>
+		  			<th class="text-center">작성자</th>
+		  			<th class="text-center">날짜</th>
+	  			</tr>
+		  	</thead>
+		  	
+		  	<tbody>
+		  		<c:forEach var="notice" items="${notices}">
+			  		<tr>
+			  			<td class="text-center">${notice.no}</td>
+			  			<td>${notice.subject}</td>
+			  			<td class="text-center">${notice.userid}</td>
+			  			<td class="text-center">${notice.regtime}</td>
+			  		</tr>
+			  	</c:forEach>
+		  	</tbody>
+		  	<!-- 
+		    <tbody>
+		      <tr class="table-info">
+		        <td>작성자 : ${notice.userid}</td>
+		        <td align="right">작성일 : ${notice.regtime}</td>
+		      </tr>
+		      <tr>
+		        <td colspan="2" class="table-danger"><strong>${notice.no}. ${notice.subject}</strong></td>
+		      </tr>
+		      <tr>
+		        <td colspan="2">${notice.content}</td>
+		      </tr>
+		      <c:if test="${!empty notice.fileInfos}">
+		      <tr>
+		        <td colspan="2">
+				<ul>
+					<c:forEach var="file" items="${notice.fileInfos}">
+					<li>${file.originFile} <a href="#" class="filedown" sfolder="${file.saveFolder}" sfile="${file.saveFile}" ofile="${file.originFile}">[다운로드]</a>
+					</c:forEach>
+				</ul>
+				</td>
+		      </tr>
+		      </c:if>
+		      <c:if test="${userinfo.userid == notice.userid}">
+		      <tr>
+		        <td colspan="2">
+				<a href="${root}/notice/modify?noticeno=${notice.no}">수정</a>
+				<a href="${root}/notice/delete?noticeno=${notice.no}">삭제</a>
+				</td>
+		      </tr>
+		      </c:if>
+		    </tbody-->
+		  </table>
 	  	<table>
 	  	<tr>
 	  	<td>

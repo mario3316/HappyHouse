@@ -5,33 +5,33 @@
 <mapper namespace="com.ssafy.happyhouse.model.mapper.NoticeMapper">
 
 	<insert id="writeNotice" parameterType="noticeDto">
-		insert into notice (noticeno, userid, subject, content, regtime)
-		values (#{noticeno}, #{userid}, #{subject}, #{content}, now())
-		<selectKey resultType="int" keyProperty="noticeno" order="AFTER">
+		insert into notice (no, userid, subject, content, regtime)
+		values (#{no}, #{userid}, #{subject}, #{content}, now())
+		<selectKey resultType="int" keyProperty="no" order="AFTER">
         	SELECT LAST_INSERT_ID()
     	</selectKey>
 	</insert>
 	
 	<insert id="fileRegist" parameterType="noticeDto">
-		insert into file_info (noticeno, savefolder, originfile, savefile)
+		insert into fileinfo (noticeno, savefolder, originfile, savefile)
 		values
 		<foreach collection="fileInfos" item="fileinfo" separator=" , ">
-		(#{noticeno}, #{fileinfo.saveFolder}, #{fileinfo.originFile}, #{fileinfo.saveFile})
+		(#{no}, #{fileinfo.saveFolder}, #{fileinfo.originFile}, #{fileinfo.saveFile})
 		</foreach>
 	</insert>
 	
 	<resultMap type="noticeDto" id="noticeList">
-		<result property="noticeno" column="noticeno"/>
+		<result property="no" column="no"/>
 		<result property="userid" column="userid"/>
 		<result property="subject" column="subject"/>
 		<result property="content" column="content"/>
 		<result property="regtime" column="regtime"/>
-		<collection property="fileInfos" column="noticeno" javaType="list" ofType="FileInfoDto" select="fileInfoList"/>
+		<collection property="fileInfos" column="no" javaType="list" ofType="FileInfoDto" select="fileInfoList"/>
 	</resultMap>
 	
 	<select id="listNotice" parameterType="map" resultMap="noticeList">
 		<![CDATA[
-		select noticeno, userid, subject, replace(content, '\n', '<br>') content, regtime
+		select no, userid, subject, replace(content, '\n', '<br>') content, regtime
 		from notice
 		]]>
 		<if test="word != null and word != ''">
@@ -42,18 +42,18 @@
 				where ${key} = #{word}
 			</if>
 		</if>
-		order by noticeno desc
+		order by no desc
 		limit #{start}, #{spp}
 	</select>
 	
 	<select id="fileInfoList" resultType="FileInfoDto">
 		select savefolder, originfile, savefile
-		from file_info
-		where noticeno = #{noticeno}
+		from fileinfo
+		where noticeno = #{no}
 	</select>
 	
 	<select id="getTotalCount" parameterType="map" resultType="int">
-		select count(noticeno)
+		select count(no)
 		from notice
 		<if test="word != null and word != ''">
 			<if test="key == 'subject'">
@@ -66,20 +66,20 @@
 	</select>
 	
 	<select id="getNotice" parameterType="int" resultType="noticeDto">
-		select noticeno, userid, subject, content, regtime
+		select no, userid, subject, content, regtime
 		from notice
-		where noticeno = #{noticeno}
+		where no = #{no}
 	</select>
 	
 	<update id="modifyNotice" parameterType="noticeDto">
 		update notice
 		set subject = #{subject}, content = #{content}
-		where noticeno = #{noticeno}
+		where no = #{no}
 	</update>
 	
 	<delete id="deleteNotice" parameterType="int">
 	delete from notice
-	where noticeno = #{noticeno}
+	where no = #{no}
 	</delete>
 	
 </mapper>

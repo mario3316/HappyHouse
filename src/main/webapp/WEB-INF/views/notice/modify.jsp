@@ -43,7 +43,7 @@
 	<br><br><br><br>
 	<h2>공지 수정</h2>
 		<form id="modifyform" method="post" action="">
-		<input type="hidden" name="noticeno" id="noticeno" value="${notice.noticeno}">
+		<input type="hidden" name="no" id="no" value="${notice.no}">
 			<div class="form-group" align="left">
 				<label for="subject">제목:</label>
 				<input type="text" class="form-control" id="subject" name="subject" value="${notice.subject}">

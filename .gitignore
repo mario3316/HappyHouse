@@ -7,6 +7,9 @@ target/
 mvnw.cmd
 *.properties
 
+### upload file ###
+**/webapp/resources/
+
 ### STS ###
 .apt_generated
 .classpath
