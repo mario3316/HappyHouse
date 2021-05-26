@@ -9,6 +9,9 @@ mvnw.cmd
 *.properties
 *.log
 
+### upload file ###
+**/webapp/resources/
+
 ### STS ###
 .apt_generated
 .classpath

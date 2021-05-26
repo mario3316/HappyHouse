@@ -5,19 +5,19 @@ import java.util.List;
 
 public class NoticeDto {
 
-	private int noticeno;
+	private int no;
 	private String userid;
 	private String subject;
 	private String content;
 	private String regtime;
 	private List<FileInfoDto> fileInfos;
 
-	public int getNoticeno() {
-		return noticeno;
+	public int getNo() {
+		return no;
 	}
 
-	public void setNoticeno(int noticeno) {
-		this.noticeno = noticeno;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public String getUserid() {

@@ -29,7 +29,7 @@ public class NoticeServiceImpl implements NoticeService {
 		}
 		NoticeMapper noticeMapper = sqlSession.getMapper(NoticeMapper.class);
 		noticeMapper.writeNotice(noticeDto);
-		logger.debug("글번호 : {}", noticeDto.getNoticeno());
+		logger.debug("글번호 : {}", noticeDto.getNo());
 		if(noticeDto.getFileInfos() != null) {
 			logger.debug("업로드 파일 수 : {}", noticeDto.getFileInfos().size());
 			noticeMapper.fileRegist(noticeDto);
