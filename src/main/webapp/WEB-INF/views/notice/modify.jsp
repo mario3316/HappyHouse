@@ -20,6 +20,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	<!-- Custom styles for this template -->
 	<link href="${root}/css/landing-page.min.css" rel="stylesheet">
+	<!-- CKEditor5 -->
+	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+	
   <script type="text/javascript">
   $(document).ready(function() {
 	  $("#modifyBtn").click(function() {
@@ -41,20 +44,41 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="container" align="center">
 	<br><br><br><br>
-	<h2>공지 수정</h2>
-		<form id="modifyform" method="post" action="">
-		<input type="hidden" name="no" id="no" value="${notice.no}">
-			<div class="form-group" align="left">
-				<label for="subject">제목:</label>
-				<input type="text" class="form-control" id="subject" name="subject" value="${notice.subject}">
-			</div>
-			<div class="form-group" align="left">
-				<label for="content">내용:</label>
-				<textarea class="form-control" rows="15" id="content" name="content">${notice.content}</textarea>
-			</div>
-			<button type="button" id="modifyBtn" class="btn btn-primary">수정</button>
-			<button type="reset" class="btn btn-warning">초기화</button>
-		</form>
+	<h2>공지사항</h2>
+	
+	<form id="modifyform" method="post" enctype="multipart/form-data" action="">
+        <input type="hidden" name="no" id="no" value="${notice.no}">
+		<table class="table mt-4 mb-2">
+			<tr>
+				<th>제목</th>
+				<td><input type="text" class="form-control" id="subject" name="subject" value="${notice.subject}"></td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<textarea class="form-control" rows="15" id="content" name="content">${notice.content }</textarea>
+					<script>
+						let editor;
+						ClassicEditor.create(document.querySelector('#content')) 
+							.then(function(newEditor) {
+						    	editor = newEditor;
+						    	editor.ui.view.editable.element.style.height = '300px';
+							}).catch(function(error) { 
+								console.error(error); 
+						});
+					</script>
+				</td>
+			</tr>
+			<tr>
+				<th>파일</th>
+				<td><input type="file" class="form-control-file border" name="upfile" multiple="multiple"></td>
+			</tr>
+		</table>
+		<div class="mb-4" align="right">
+			<button type="button" id="modifyBtn" class="btn btn-light">수정</button>
+			<a href="javascript:history.back();" class="btn btn-light">취소</a>
+		</div>
+	</form>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

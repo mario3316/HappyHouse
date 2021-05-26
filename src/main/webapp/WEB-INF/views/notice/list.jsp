@@ -115,38 +115,6 @@
 			  		</tr>
 			  	</c:forEach>
 		  	</tbody>
-		  	<!-- 
-		    <tbody>
-		      <tr class="table-info">
-		        <td>작성자 : ${notice.userid}</td>
-		        <td align="right">작성일 : ${notice.regtime}</td>
-		      </tr>
-		      <tr>
-		        <td colspan="2" class="table-danger"><strong>${notice.no}. ${notice.subject}</strong></td>
-		      </tr>
-		      <tr>
-		        <td colspan="2">${notice.content}</td>
-		      </tr>
-		      <c:if test="${!empty notice.fileInfos}">
-		      <tr>
-		        <td colspan="2">
-				<ul>
-					<c:forEach var="file" items="${notice.fileInfos}">
-					<li>${file.originFile} <a href="#" class="filedown" sfolder="${file.saveFolder}" sfile="${file.saveFile}" ofile="${file.originFile}">[다운로드]</a>
-					</c:forEach>
-				</ul>
-				</td>
-		      </tr>
-		      </c:if>
-		      <c:if test="${userinfo.userid == notice.userid}">
-		      <tr>
-		        <td colspan="2">
-				<a href="${root}/notice/modify?noticeno=${notice.no}">수정</a>
-				<a href="${root}/notice/delete?noticeno=${notice.no}">삭제</a>
-				</td>
-		      </tr>
-		      </c:if>
-		    </tbody-->
 		  </table>
 	  	<table>
 	  	<tr>

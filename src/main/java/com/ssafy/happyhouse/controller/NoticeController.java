@@ -79,7 +79,7 @@ public class NoticeController {
 			noticeDto.setUserid(memberDto.getUserid());
 			try {
 				noticeService.writeNotice(noticeDto);
-				return "notice/writesuccess";
+				return "redirect:/notice/detail?noticeno=" + noticeDto.getNo();
 			} catch (Exception e) {
 				e.printStackTrace();
 				model.addAttribute("msg", "글작성중 문제가 발생했습니다.");
@@ -111,7 +111,6 @@ public class NoticeController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam("noticeno") int noticeno, Model model) throws Exception {
 		NoticeDto noticeDto = noticeService.getNotice(noticeno);
-		System.out.println("==========================>"+noticeDto.getFileInfos());
 		model.addAttribute("notice", noticeDto);
 		return "notice/detail";
 	}
@@ -136,7 +135,7 @@ public class NoticeController {
 			noticeDto.setUserid(memberDto.getUserid());
 			try {
 				noticeService.modifyNotice(noticeDto);
-				return "notice/writesuccess";
+				return "redirect:/notice/detail?noticeno=" + noticeDto.getNo();
 			} catch (Exception e) {
 				e.printStackTrace();
 				model.addAttribute("msg", "글수정 중 문제가 발생했습니다.");
