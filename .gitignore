@@ -1,11 +1,13 @@
 HELP.md
 target/
 .mvn/
+.log/
 !**/src/main/**/target/
 !**/src/test/**/target/
 /{mvnw}
 mvnw.cmd
 *.properties
+*.log
 
 ### STS ###
 .apt_generated

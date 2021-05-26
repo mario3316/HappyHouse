@@ -29,7 +29,6 @@ public class HouseInfoServiceImpl implements HouseInfoService {
 	@Override
 	public HouseInfoDto searchByDongAptname(String dong, String aptname) throws Exception {
 		Map<String, String> param = new HashMap<>();
-		System.out.println(dong + " / " + aptname);
 		param.put("dong", dong);
 		param.put("aptname", aptname);
 		return sqlSession.getMapper(HouseInfoMapper.class).searchByDongAptname(param);

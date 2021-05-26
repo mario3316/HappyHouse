@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.model.HouseInfoDto;
-import com.ssafy.happyhouse.model.service.HouseInfoService;
 import com.ssafy.happyhouse.model.service.SubwayService;
 
 @Controller
@@ -27,9 +26,6 @@ public class SubwayController {
 
 	@Autowired
 	private SubwayService subwayService;
-
-	@Autowired
-	private HouseInfoService infoService;
 
 	@RequestMapping(value = "/mvsearch", method = RequestMethod.GET)
 	public String mvsearch() {

@@ -14,7 +14,7 @@
 	
 	<select id="searchByDongAptname" parameterType="map" resultType="HouseInfoDto">
 		select * from houseinfo
-		where dong = #{dong} and aptname = #{aptname}
+		where dong = #{dong} and aptname like CONCAT('%', #{aptname}, '%')
 		limit 1;
 	</select>
 

@@ -32,6 +32,7 @@
 	
 	let map;
 	let housemarkers = [];
+	var detailInfo;
 	let markers = [];
 	var lat = 37.606991;
 	var lng = 127.0232185;
@@ -57,7 +58,6 @@
 			if (key.keyCode == 13) 
 				search();
 		});
-		
 	});
 	
 	// 상권 정보 검색(엔터/버튼)
@@ -107,7 +107,7 @@
 	// data 받아오기
 	function getDeals(searchinfo) {
 		$.ajax({
-			url: '${root}/house/searchBy',  
+			url: '${root}/house/searchBy',
 			type: 'POST',
 			contentType: 'application/json;charset=utf-8',
 			dataType: 'json',
@@ -122,14 +122,67 @@
 		});		
 	}
 	
+	// 상세 정보 받아오기
+	function getDetail(detailInfo) {
+		jsondata = JSON.stringify({
+				"dong" : $(detailInfo).attr("dong"), 
+				"aptname" : $(detailInfo).attr("aptname"),
+		});
+		
+		$.ajax({
+			url: '${root}/house/detail',  
+			type: 'POST',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			data: jsondata,
+			success: function(datas) {
+				makeDetailTable(datas);
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
+		});
+	}
+	
+	function makeDetailTable(data){
+		var html = '';
+		
+		html += '<table class="table table-dark">';
+		html += '<thead>';
+		html += '<tr>';
+		html += '<th>아파트 명</th>';
+		html += '<th>동</th>';
+		html += '<th>주소</th>';
+		html += '<th>건축년도</th>';
+		html += '</tr>';
+		html += '</thead>';
+		html += '<tbody>';
+		html += '<tr>';
+		html += '<td>'+data.aptName+'</td>';
+		html += '<td>'+data.dong+'</td>';
+		html += '<td>'+data.jibun+'</td>';
+		html += '<td>'+data.buildYear+'</td>';
+		html += '</tr>';
+		html += '</tbody>';
+		html += '</table>';
+		
+		$("#DetailBody").empty();
+		$("#DetailBody").append(html);
+	}
+	
 	function makeTable(datas){
 		var html = '';
 		
 		for(key in datas){
-			html += '<tr>';
+			detailInfo = JSON.stringify({
+				"dong" : datas[key].dong, 
+				"aptname" : datas[key].aptName,
+			});
+			
+			html += '<tr onClick="getDetail(this)" dong=' + datas[key].dong + '  aptname=' + datas[key].aptName + '>';
 			html += '<td>'+datas[key].no+'</td>';
 			html += '<td>'+datas[key].dong+'</td>';
-			html += '<td><a href="/house/detail?no=' + datas[key].no + '"></a>' + datas[key].aptName + '</td>';
+			html += '<td>' + datas[key].aptName + '</td>';
 			html += '<td>'+datas[key].dealAmount+'</td>';
 			html += '</tr>';
 		}
@@ -219,7 +272,7 @@
 	<div class="container">
 	
     <!-- map start -->
-   	<div class="main col-lg-9 order-lg-2 ml-xl-auto">
+   	<div class="main col-lg-12 order-lg-2 ml-xl-auto">
       <div class="row girde-space-10">
          <div class="col-12 justify-content-center" id="map" style="width: 400px; height: 600px"></div>
       </div>
@@ -236,7 +289,6 @@
 					<th>동 이름</th>
 					<th>아파트 이름</th>
 					<th>거래금액</th>
-					<th>거래종류</th>
 				</tr>
 				</thead>
 				<tbody id="HouseBody">
@@ -244,6 +296,8 @@
 			</table>
 		</form>
 	</div>
+	
+	<div id="DetailBody"></div>
 	
 	</div>
 

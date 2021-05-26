@@ -122,14 +122,67 @@
 		});		
 	}
 	
+	// 상세 정보 받아오기
+	function getDetail(detailInfo) {
+		jsondata = JSON.stringify({
+				"dong" : $(detailInfo).attr("dong"), 
+				"aptname" : $(detailInfo).attr("aptname"),
+		});
+		
+		$.ajax({
+			url: '${root}/house/detail',  
+			type: 'POST',
+			contentType: 'application/json;charset=utf-8',
+			dataType: 'json',
+			data: jsondata,
+			success: function(datas) {
+				makeDetailTable(datas);
+			},
+			error:function(xhr,status,msg){
+				console.log("상태값 : " + status + " Http에러메시지 : "+msg);
+			}	
+		});
+	}
+	
+	function makeDetailTable(data){
+		var html = '';
+		
+		html += '<table class="table table-dark">';
+		html += '<thead>';
+		html += '<tr>';
+		html += '<th>아파트 명</th>';
+		html += '<th>동</th>';
+		html += '<th>주소</th>';
+		html += '<th>건축년도</th>';
+		html += '</tr>';
+		html += '</thead>';
+		html += '<tbody>';
+		html += '<tr>';
+		html += '<td>'+data.aptName+'</td>';
+		html += '<td>'+data.dong+'</td>';
+		html += '<td>'+data.jibun+'</td>';
+		html += '<td>'+data.buildYear+'</td>';
+		html += '</tr>';
+		html += '</tbody>';
+		html += '</table>';
+		
+		$("#DetailBody").empty();
+		$("#DetailBody").append(html);
+	}
+	
 	function makeTable(datas){
 		var html = '';
 		
 		for(key in datas){
-			html += '<tr>';
+			detailInfo = JSON.stringify({
+				"dong" : datas[key].dong, 
+				"aptname" : datas[key].aptName,
+			});
+			
+			html += '<tr onClick="getDetail(this)" dong=' + datas[key].dong + '  aptname=' + datas[key].aptName + '>';
 			html += '<td>'+datas[key].no+'</td>';
 			html += '<td>'+datas[key].dong+'</td>';
-			html += '<td><a href="/house/detail?no=' + datas[key].no + '"></a>' + datas[key].aptName + '</td>';
+			html += '<td>'+datas[key].aptName+'</td>';
 			html += '<td>'+datas[key].jibun+'</td>';
 			html += '<td>'+datas[key].subway+'</td>';
 			html += '</tr>';
@@ -198,16 +251,17 @@
 					<form method="post" action="${root}/subway/searchBy">
 						<div class="form-row">
 							<div class="col-12 col-md-3 mt-1 mb-2 mb-md-0">
-								<input type="hidden" name="act" value="searchBy"> <select class="form-control" name="by">
+								<input type="hidden" name="act" value="searchBy">
+								<select class="form-control" id="key" name="by">
 									<option value="dong">동이름
 								</select>
 							</div>
 							<div class="col-12 col-md-6 mt-1 mb-2 mb-md-0">
-								<input type="text" class="form-control" placeholder="" name="keyword" id="initSearch">
+								<input type="text" class="form-control" placeholder="" name="keyword" id="word">
 							</div>
-							<div class="col-12 col-md-3">
-								<input type="submit" id="btn-search" class="btn btn-block btn-lg btn-outline-light" value="검색">
-							</div>
+		                     <div class="col-12 col-md-3">
+                          		<button type="button" id="searchBtn" class="btn btn-block btn-lg btn-outline-light">검색</button>
+                     		</div>
 						</div>
 					</form>
 				</div>
@@ -222,7 +276,7 @@
 	<div class="container">
 	
     <!-- map start -->
-   	<div class="main col-lg-9 order-lg-2 ml-xl-auto">
+   	<div class="main col-lg-12 order-lg-2 ml-xl-auto">
       <div class="row girde-space-10">
          <div class="col-12 justify-content-center" id="map" style="width: 400px; height: 600px"></div>
       </div>
@@ -248,6 +302,8 @@
 			</table>
 		</form>
 	</div>
+	
+	<div id="DetailBody"></div>
 	
 	</div>
 	
