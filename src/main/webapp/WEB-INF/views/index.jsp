@@ -28,7 +28,7 @@
 <link href="css/landing-page.min.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNsJy7d_yesjenAEdxqXGy-Jx_nN0sLdQ&callback=initMap" async defer></script>
+<script	src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap" async defer></script>
 
 <script type="text/javascript">	
 	var locations = [];
